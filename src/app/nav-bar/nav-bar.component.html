@@ -1,0 +1,6 @@
+<nav class="nav-bar">
+  <div class="home-title"> {{ homeTitle }} </div>
+  <ul class="nav-list">
+    <li *ngFor="let item of items" class="nav-item"><a  [routerLink]="item.path">{{ item.name }}</a></li>
+  </ul>
+</nav>
