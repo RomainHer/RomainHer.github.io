@@ -1,0 +1,20 @@
+.nav-bar{
+  display: flex;
+  flex-direction: row;
+  background-color: darkcyan;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.home-title{
+  font-size: 30px;
+}
+
+.nav-list{
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item {
+  padding: 0 10px 0 10px;
+}
