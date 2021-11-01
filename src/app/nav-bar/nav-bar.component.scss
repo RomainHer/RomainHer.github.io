@@ -1,20 +1,32 @@
 .nav-bar{
   display: flex;
   flex-direction: row;
-  background-color: darkcyan;
   align-items: center;
   padding-left: 20px;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #00000A;
 }
 
 .home-title{
-  font-size: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .nav-list{
+  margin-right: 30px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
 }
 
 .nav-item {
   padding: 0 10px 0 10px;
+}
+
+.nav-link{
+  font-size: 30px;
+  color: white;
 }
