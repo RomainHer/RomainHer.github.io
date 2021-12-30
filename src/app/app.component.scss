@@ -5,6 +5,15 @@
 }
 
 .app_body{
+  min-width: 100vw;
+}
+
+.app-content {
+  flex: 1;
   display: flex;
   flex-direction: row;
+}
+
+.app {
+  width: 100%;
 }

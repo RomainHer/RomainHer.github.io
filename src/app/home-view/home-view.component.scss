@@ -1,0 +1,18 @@
+.home-view{
+  background-color: #00001F;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-center {
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+}
+
+.title{
+  font-size: 40px;
+}

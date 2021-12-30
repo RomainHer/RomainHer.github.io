@@ -19,7 +19,15 @@
   flex-direction: column;
 }
 
-.nav-item{
+.nav-item-uncollapse{
+  display: flex;
+  min-width: 150px;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+.nav-item-collapse{
   display: flex;
   align-items: center;
   margin-bottom: 20px;
