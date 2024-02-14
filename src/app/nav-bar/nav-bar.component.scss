@@ -20,6 +20,8 @@
 }
 
 .nav-item-uncollapse{
+  animation-name : openMenu;
+  animation-duration: 0.5s;
   display: flex;
   min-width: 150px;
   align-items: center;
@@ -46,4 +48,13 @@
 
 .nav-link-text{
   font-size: 25px;
+}
+
+@keyframes openMenu {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }

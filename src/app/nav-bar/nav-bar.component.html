@@ -5,7 +5,9 @@
   </div>
   <ul class="nav-list">
     <li *ngFor="let item of items" [ngClass]="{'nav-item-collapse' : isCollapsed, 'nav-item-uncollapse': !isCollapsed}">
-      <a class="nav-link" [routerLink]="item.path"><i class="icon-nav" [style.width]="widthIcon" [class]="item.icon"></i><span class="nav-link-text" *ngIf="!isCollapsed">{{ item.name }}</span></a>
+      <a class="nav-link" [routerLink]="item.path"><i class="icon-nav" [style.width]="widthIcon" [class]="item.icon"></i><span class="nav-link-text" [@openCloseMenu]="menuAnimationState" *ngIf="!isCollapsed">{{ item.name }}</span></a>
     </li>
   </ul>
 </nav>
+
+<!--  -->
