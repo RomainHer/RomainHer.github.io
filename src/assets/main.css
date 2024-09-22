@@ -1,35 +1,25 @@
-@import './base.css';
+body {
+  font-family: 'Spline Sans Mono', monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  background-color: #040a25;
+  color: #fff;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.terminal-container {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-family: 'Spline Sans Mono', monospace;
+  font-weight: 700;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.terminal-container > span::before {
+  content: '~$ ';
+  font-weight: 400;
 }
