@@ -58,10 +58,6 @@ var deleteText = function (target, word, color, interval) {
         }, 0);
     }
 }*/
-
-function changeMessage(i: any, j: any) {
-  throw new Error('Function not implemented.')
-}
 </script>
 
 <template>
