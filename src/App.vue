@@ -10,7 +10,7 @@ import ContentContainer from './components/ContentContainer.vue'
     <ContentContainer />
   </main>
 
-  <footer class="content">footer</footer>
+  <footer class="content">Credits : Romain Heriteau & Léane Diraison</footer>
 </template>
 
 <style scoped>
@@ -19,5 +19,13 @@ div {
 }
 .content {
   margin-left: 71px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: #3686E4;
+  font-family: Exo, sans-serif;
 }
 </style>
