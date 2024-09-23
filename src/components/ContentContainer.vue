@@ -16,6 +16,6 @@ import ProjectContent from './contents/ProjectContent.vue'
 <style scoped>
 .separator {
   height: 10px;
-  background: linear-gradient(to right, #40dbef, #3a5bdc);
+  background: linear-gradient(to right, #40DBEF, #30B2EC 42%, #3A5BDC 80%);
 }
 </style>

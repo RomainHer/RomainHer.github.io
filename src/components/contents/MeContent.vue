@@ -5,10 +5,14 @@
     <img src="../../assets/images/avatar.png" alt="me" class="me-image" />
     <div class="about-me">
       <div class="title-about-me">
-        <div class="title-about-me-en">About me 👋</div>
+        <div class="title-about-me-en">About me <span style="visibility: hidden">-</span>👋</div>
         <div class="title-about-me-fr">À propos de moi</div>
       </div>
       <div class="about-me-content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
         do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
@@ -23,6 +27,7 @@
 
 <style scoped>
 #me-content {
+  position: relative;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -30,27 +35,42 @@
 }
 
 .me-image {
-  height: 200px;
+  position: absolute;
+  left: 50px;
+  height: 280px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: white;
 }
 
 .about-me {
-  margin: 30px;
-  padding: 20px;
-  padding-left: 100px;
+  margin: 50px;
+  padding: 30px;
+  margin-left: 250px;
+  padding-left: 120px;
+  padding-right: 40px;
   border: solid 1px black;
   color: black;
 }
 
+.title-about-me {
+  position: relative;
+  padding-bottom: 30px;
+}
+
 .title-about-me-en {
   font-family: 'Exo', sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
   color: #040a25;
 }
 
 .title-about-me-fr {
+  position: absolute;
+  top: 20px;
+  left: 20px;
   font-family: 'Birthstone', cursive;
-  font-size: 50px;
+  font-size: 40px;
   background: linear-gradient(to right, #40dbef, #30b2ec 27%, #2f51d5 61%);
   background-clip: text;
   width: fit-content;
@@ -62,6 +82,7 @@
   font-family: 'Spline Sans Mono', monospace;
   font-size: 20px;
   text-align: justify;
+  padding-bottom: 30px;
 }
 
 .tc-light {
