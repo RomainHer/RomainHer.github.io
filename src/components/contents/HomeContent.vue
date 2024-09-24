@@ -4,60 +4,43 @@ import { onMounted, ref } from 'vue'
 const wordsDescription = ['DEVELOPER', 'ENGINEER', 'HARD WORKER', 'PASSIONATE']
 const colors = ['#40DBEF', '#FD9638', '#4CF75D']
 let writingWord = ref(wordsDescription[0])
-let writingWordIndex = ref(0)
-let writingWordIndexLetter = ref(0)
 let writingWordColorIndex = ref(0)
-let deletingWord = ref(false)
-let interval = ref(100)
 
 onMounted(() => {
-  setInterval(() => {
-    if (deletingWord.value && writingWordIndexLetter.value > 0) {
-      writingWordIndexLetter.value--
-    } else if (deletingWord.value && writingWordIndexLetter.value == 0) {
-      deletingWord.value = false
-      writingWordIndex.value = (writingWordIndex.value + 1) % wordsDescription.length
-      writingWordColorIndex.value = (writingWordColorIndex.value + 1) % colors.length
-    } else if (writingWordIndexLetter.value == wordsDescription[writingWordIndex.value].length) {
-      deletingWord.value = true
-    } else {
-      writingWordIndexLetter.value++
-    }
-    changeWritingWord(writingWordIndex.value, writingWordIndexLetter.value)
-  }, interval.value)
+  showText(0, 0, 0, 100)
 })
 
-function changeWritingWord(i: number, j: number) {
-  writingWord.value = wordsDescription[i].slice(0, j)
-}
-/*var showText = function (target, word, color, index, interval) {
-    message = wordsDescription[word];
-    if (index < message.length) {
-        document.getElementById(target).append(message[index++]);
-        setTimeout(function () { showText(target, word, color, index, interval); }, interval);
-    } else {
-        setTimeout(function () {
-            deleteText(target, word, color, 50);
-        }, 3000); // Appelle deleteText après la fin de showText
-    }
+var showText = function (word: number, color: number, index: number, interval: number) {
+  let message = wordsDescription[word]
+  if (index <= message.length) {
+    writingWord.value = message.slice(0, index++)
+    setTimeout(function () {
+      showText(word, color, index, interval)
+    }, interval)
+  } else {
+    setTimeout(function () {
+      deleteText(word, color, 40)
+    }, 3000) // Appelle deleteText après la fin de showText
+  }
 }
 
-var deleteText = function (target, word, color, interval) {
-    var text = document.getElementById(target).innerHTML;
-    if (text.length > 0) {
-        document.getElementById(target).innerHTML = text.substring(0, text.length - 1);
-        setTimeout(function () { deleteText(target, word, color, interval); }, interval);
-    } else {
-        word++;
-        color++;
-        if(word == wordsDescription.length) word = 0;
-        if(color == colors.length) color = 0;
-        document.getElementById(target).style.color = colors[color];
-        setTimeout(function () {
-            showText(target, word, color, 0, 100);
-        }, 0);
-    }
-}*/
+var deleteText = function (word: number, color: number, interval: number) {
+  if (writingWord.value.length > 0) {
+    writingWord.value = writingWord.value.substring(0, writingWord.value.length - 1)
+    setTimeout(function () {
+      deleteText(word, color, interval)
+    }, interval)
+  } else {
+    word++
+    color++
+    if (word == wordsDescription.length) word = 0
+    if (color == colors.length) color = 0
+    writingWordColorIndex.value = color
+    setTimeout(function () {
+      showText(word, color, 0, 100)
+    }, 0)
+  }
+}
 </script>
 
 <template>
