@@ -12,13 +12,12 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
         do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-        consectetur.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-        consectetur.
+        consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur.
       </div>
-      <div class="terminal-container tc-light">
+      <div class="terminal-container tc-light tc-light-button">
         <span>Voir mon CV</span>
       </div>
     </div>
@@ -83,14 +82,5 @@
   font-size: 20px;
   text-align: justify;
   padding-bottom: 30px;
-}
-
-.tc-light {
-  background-color: rgba(48, 178, 236, 0.33);
-  color: #3a5bdc;
-}
-
-.tc-light > span::before {
-  color: black;
 }
 </style>

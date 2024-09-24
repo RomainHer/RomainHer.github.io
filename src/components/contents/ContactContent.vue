@@ -8,12 +8,42 @@
         <div class="contact-title-fr">Me contacter</div>
       </div>
       <form action="" class="contact-form">
-        <div>
-          <input type="text" name="name" id="name" placeholder="Name">
-          <input type="text" name="email" id="email" placeholder="Email">
+        <div class="contact-form-box">
+          <div class="contact-form-personal-info">
+            <input
+              class="contact-input"
+              type="text"
+              name="contact-form-name"
+              id="contact-form-name"
+              placeholder="Name"
+            />
+            <input
+              class="contact-input"
+              type="text"
+              name="contact-form-email"
+              id="contact-form-email"
+              placeholder="Email"
+            />
+          </div>
+          <input
+            class="contact-input"
+            type="text"
+            name="contact-form-title"
+            id="contact-form-title"
+            placeholder="Title"
+          />
+          <textarea
+            class="contact-input"
+            name="contact-form-message"
+            id="contact-form-message"
+            cols="30"
+            rows="10"
+            placeholder="Message"
+          ></textarea>
+          <div class="terminal-container tc-light tc-light-button">
+            <span>Send</span>
+          </div>
         </div>
-        <input type="text" name="title" id="title" placeholder="Title">
-        <textarea name="message" id="message" cols="30" rows="10" placeholder="message"></textarea>
       </form>
     </div>
   </div>
@@ -24,7 +54,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #40DBEF, #30B2EC 42%, #3A5BDC 80%);
+  background: linear-gradient(to right, #40dbef, #30b2ec 42%, #3a5bdc 80%);
 }
 
 .contact-box {
@@ -45,7 +75,7 @@
 
 .contact-title {
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 }
 
 .contact-title-en {
@@ -63,7 +93,7 @@
   left: 40px;
   font-family: 'Birthstone', cursive;
   font-size: 40px;
-  background: linear-gradient(to right, #40DBEF, #30B2EC 27%, #2F51D5 61%);
+  background: linear-gradient(to right, #40dbef, #30b2ec 27%, #2f51d5 61%);
   background-clip: text;
   width: fit-content;
   -webkit-background-clip: text;
@@ -80,7 +110,48 @@
   box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
 }
 
-.contact-form * {
-  width: 80%;
+.contact-form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 40px 0px 40px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.contact-form-box > input,
+textarea {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.contact-form-personal-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#contact-form-name {
+  width: 30%;
+}
+
+#contact-form-email {
+  width: 65%;
+}
+
+.contact-input {
+  padding: 10px;
+  border-radius: 0px;
+  border: 1px solid #040a25;
+  color: #3d3d3d;
+  font-family: Exo, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.contact-input::placeholder {
+  color: #cccdd1;
 }
 </style>

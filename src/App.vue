@@ -25,7 +25,7 @@ footer {
   display: flex;
   justify-content: center;
   padding: 10px;
-  color: #3686E4;
+  color: #3686e4;
   font-family: Exo, sans-serif;
 }
 </style>
