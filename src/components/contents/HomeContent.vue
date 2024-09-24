@@ -10,7 +10,7 @@ onMounted(() => {
   showText(0, 0, 0, 100)
 })
 
-var showText = function (word: number, color: number, index: number, interval: number) {
+function showText(word: number, color: number, index: number, interval: number) {
   let message = wordsDescription[word]
   if (index <= message.length) {
     writingWord.value = message.slice(0, index++)
@@ -24,7 +24,7 @@ var showText = function (word: number, color: number, index: number, interval: n
   }
 }
 
-var deleteText = function (word: number, color: number, interval: number) {
+function deleteText(word: number, color: number, interval: number) {
   if (writingWord.value.length > 0) {
     writingWord.value = writingWord.value.substring(0, writingWord.value.length - 1)
     setTimeout(function () {
@@ -39,6 +39,13 @@ var deleteText = function (word: number, color: number, interval: number) {
     setTimeout(function () {
       showText(word, color, 0, 100)
     }, 0)
+  }
+}
+
+function openInNewTab(url: string) {
+  const newWindow = window.open(url, '_blank')
+  if (newWindow) {
+    newWindow.focus()
   }
 }
 </script>
@@ -79,13 +86,19 @@ var deleteText = function (word: number, color: number, interval: number) {
         </div>
         <div class="icon-link-list-container">
           <div class="icon-link-list">
-            <div class="icon-link-box">
+            <div
+              class="icon-link-box"
+              @click="openInNewTab('https://www.linkedin.com/in/romain-heriteau-1b902b205')"
+            >
               <img src="../../assets/icons/linkedin.svg" alt="icon linkedin" class="icon-link" />
             </div>
-            <div class="icon-link-box">
+            <div class="icon-link-box" @click="openInNewTab('https://github.com/RomainHer')">
               <img src="../../assets/icons/github.svg" alt="icon github" class="icon-link" />
             </div>
-            <div class="icon-link-box">
+            <div
+              class="icon-link-box"
+              @click="openInNewTab('https://discordapp.com/users/620287550577180715')"
+            >
               <img src="../../assets/icons/discord.svg" alt="icon discord" class="icon-link" />
             </div>
           </div>
