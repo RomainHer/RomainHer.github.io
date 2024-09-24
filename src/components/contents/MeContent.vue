@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+async function downloadPdf(pdfPath: string, pdfName: string) {
+  // Utilisation de l'import dynamique
+  const link = document.createElement('a')
+  link.href = pdfPath // La propriété 'default' contient l'URL du fichier
+  link.download = pdfName
+  link.target = '_blank'
+  link.click()
+}
+</script>
 
 <template>
   <div id="me-content">
@@ -17,7 +26,10 @@
         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
         ipsum dolor sit amet, consectetur.
       </div>
-      <div class="terminal-container tc-light tc-light-button">
+      <div
+        class="terminal-container tc-light tc-light-button"
+        @click="downloadPdf('/CV.pdf', 'CV_Romain_Heriteau_2024.pdf')"
+      >
         <span>Voir mon CV</span>
       </div>
     </div>
