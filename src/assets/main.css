@@ -15,8 +15,8 @@ body {
 }
 
 #app {
-  background-color: #040a25;
-  color: #fff;
+  background-color: white;
+  color: black;
 }
 
 .terminal-container {
@@ -56,4 +56,39 @@ body {
 
 .tc-dark > span::before {
   color: white;
+}
+
+.tc-orange {
+  background-color: #ffdf8d57;
+  color: #ffb800;
+}
+
+.tc-orange > span::before {
+  color: black;
+}
+
+.title-content {
+  position: relative;
+  padding-bottom: 30px;
+  overflow: visible;
+}
+
+.title-content-en {
+  font-family: 'Exo', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #040a25;
+}
+
+.title-content-fr {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: 'Birthstone', cursive;
+  font-size: 40px;
+  background: linear-gradient(to right, #40dbef, #30b2ec 27%, #2f51d5 61%);
+  background-clip: text;
+  width: fit-content;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

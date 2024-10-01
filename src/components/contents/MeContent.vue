@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ExperienceList from '../ExperienceList.vue'
+
 async function downloadPdf(pdfPath: string, pdfName: string) {
   // Utilisation de l'import dynamique
   const link = document.createElement('a')
@@ -7,15 +9,54 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
   link.target = '_blank'
   link.click()
 }
+
+const experiencesContent = [
+  {
+    type: 'work',
+    title: 'Développeur Full Stack',
+    company: 'Entreprise 1',
+    address: 'Paris, France',
+    startYear: 2020,
+    endYear: 2020,
+    description: "Description de l'expérience"
+  },
+  {
+    type: 'work',
+    title: 'Développeur Full Stack',
+    company: 'Entreprise 2',
+    address: 'Paris, France',
+    startYear: 2021,
+    endYear: 2022,
+    description: "Description de l'expérience"
+  },
+  {
+    type: 'study',
+    title: 'Développeur Full Stack',
+    company: 'Entreprise 3',
+    address: 'Paris, France',
+    startYear: 2023,
+    endYear: 2024,
+    description: "Description de l'expérience"
+  },
+  {
+    type: 'work',
+    title: 'Développeur Full Stack',
+    company: 'Entreprise 3',
+    address: 'Paris, France',
+    startYear: 2023,
+    endYear: 2024,
+    description: "Description de l'expérience"
+  }
+]
 </script>
 
 <template>
   <div id="me-content">
     <img src="../../assets/images/avatar.png" alt="me" class="me-image" />
     <div class="about-me">
-      <div class="title-about-me">
-        <div class="title-about-me-en">About me <span style="visibility: hidden">-</span>👋</div>
-        <div class="title-about-me-fr">À propos de moi</div>
+      <div class="title-content">
+        <div class="title-content-en">About me <span style="visibility: hidden">-</span>👋</div>
+        <div class="title-content-fr">À propos de moi</div>
       </div>
       <div class="about-me-content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -34,6 +75,7 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
       </div>
     </div>
   </div>
+  <ExperienceList :experiences="experiencesContent" />
 </template>
 
 <style scoped>
@@ -62,31 +104,6 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
   padding-right: 40px;
   border: solid 1px black;
   color: black;
-}
-
-.title-about-me {
-  position: relative;
-  padding-bottom: 30px;
-}
-
-.title-about-me-en {
-  font-family: 'Exo', sans-serif;
-  font-size: 40px;
-  font-weight: 700;
-  color: #040a25;
-}
-
-.title-about-me-fr {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-family: 'Birthstone', cursive;
-  font-size: 40px;
-  background: linear-gradient(to right, #40dbef, #30b2ec 27%, #2f51d5 61%);
-  background-clip: text;
-  width: fit-content;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .about-me-content {

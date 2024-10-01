@@ -3,9 +3,9 @@
 <template>
   <div id="contact-content" class="content">
     <div class="contact-box">
-      <div class="contact-title">
-        <div class="contact-title-en">Contact me</div>
-        <div class="contact-title-fr">Me contacter</div>
+      <div class="contact-title title-content">
+        <div class="title-content-en">Contact me</div>
+        <div class="contact-title-fr title-content-fr">Me contacter</div>
       </div>
       <form action="" class="contact-form">
         <div class="contact-form-box">
@@ -74,30 +74,11 @@
 }
 
 .contact-title {
-  position: relative;
   padding-bottom: 50px;
 }
 
-.contact-title-en {
-  text-align: center;
-  font-family: 'Exo', sans-serif;
-  font-size: 40px;
-  font-weight: 700;
-  color: #040a25;
-}
-
 .contact-title-fr {
-  position: absolute;
-  text-align: center;
-  top: 20px;
   left: 40px;
-  font-family: 'Birthstone', cursive;
-  font-size: 40px;
-  background: linear-gradient(to right, #40dbef, #30b2ec 27%, #2f51d5 61%);
-  background-clip: text;
-  width: fit-content;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .contact-form {

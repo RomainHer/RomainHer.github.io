@@ -92,7 +92,6 @@ function isCenter(slide: { position: string }) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
 }
 
 .pagination {

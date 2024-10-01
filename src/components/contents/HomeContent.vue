@@ -122,6 +122,8 @@ function openInNewTab(url: string) {
   flex-direction: column;
   height: 100vh;
   overflow: visible;
+  background-color: #040a25;
+  color: white;
 }
 
 .home-page-center {
