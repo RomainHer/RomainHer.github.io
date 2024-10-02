@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ExperienceList from '../ExperienceList.vue'
-
 async function downloadPdf(pdfPath: string, pdfName: string) {
   // Utilisation de l'import dynamique
   const link = document.createElement('a')
@@ -9,56 +7,6 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
   link.target = '_blank'
   link.click()
 }
-
-const experiencesContent = [
-  {
-    type: 'study',
-    title: "Diplôme d'ingénieur en informatique",
-    company: 'ENSSAT',
-    address: 'Lannion, Bretagne, France',
-    startYear: 2024,
-    endYear: 2024,
-    description: ''
-  },
-  {
-    type: 'work',
-    title: 'Développeur Full Stack',
-    company: 'Orange Innovation',
-    address: 'Lannion, Bretagne, France',
-    startYear: 2021,
-    endYear: 2024,
-    description:
-      "Développement d’un service cloud d’hébergement d’applications web serverless pour les développeurs internes, incluant une interface graphique pour la gestion des fichiers\n\nInfrastructure cloud avec Kubernetes * \nCréation d'un back-end et d’une API REST pour piloter un service de conteneurs d’objets (type S3) * \nTechnologies : Scala, Tapir, Akka Stream, Vue.js (v3) * \nAutomatisation du dépôt des fichiers avec GitLab CI/CD et Shell * \n\nMaintenance logicielle sur deux applications web\n\nDéveloppement en Vue.js et Angular * \nCorrection de bugs fonctionnels, visuels et de sécurité * \nAjout de nouvelles fonctionnalités pour améliorer l'ergonomie et les services * "
-  },
-  {
-    type: 'work',
-    title: 'Chercheur en big data',
-    company: 'Université Ionienne',
-    address: 'Corfou, Corfou, Grèce',
-    startYear: 2023,
-    endYear: 2023,
-    description:
-      'Recherche sur la mise en place d’un algorithme de similarité pour données JSON (MapReduce) * \nTests à grande échelle avec Google Cloud Platform * '
-  },
-  {
-    type: 'study',
-    title: 'DUT Informatique',
-    company: 'IUT de Caen',
-    address: 'Caen, Normandie, France',
-    startYear: 2021,
-    endYear: 2021,
-    description: ''
-  },
-  {
-    type: 'work',
-    title: 'Stage datahub',
-    company: 'MMA',
-    address: 'Le Mans, Pays de la Loire, France',
-    startYear: 2023,
-    endYear: 2024,
-    description: 'Migration d’un job de traitement de données vers une nouvelle solution * '
-  }
-]
 </script>
 
 <template>
@@ -70,13 +18,12 @@ const experiencesContent = [
         <div class="title-content-fr">À propos de moi</div>
       </div>
       <div class="about-me-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-        consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-        ipsum dolor sit amet, consectetur.
+        Développeur front-end avec une expérience solide dans la création d’interfaces web et
+        mobiles, modernes et réactives, ainsi qu'une bonne maîtrise du back-end pour des solutions
+        complètes. Fort de 3 ans d’expérience chez Orange, je propose mes services en freelance pour
+        des missions de développement front-end, tout en intégrant mes compétences back-end pour des
+        solutions sur mesure. Disponible pour vous accompagner, de la conception à la mise en
+        production, en garantissant efficacité et qualité.
       </div>
       <div
         class="terminal-container tc-light tc-light-button"
@@ -86,7 +33,6 @@ const experiencesContent = [
       </div>
     </div>
   </div>
-  <ExperienceList :experiences="experiencesContent" />
 </template>
 
 <style scoped>

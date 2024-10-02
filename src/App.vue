@@ -10,7 +10,7 @@ import ContentContainer from './components/ContentContainer.vue'
     <ContentContainer />
   </main>
 
-  <footer class="content">Credits : Romain Heriteau & Léane Diraison</footer>
+  <footer class="content">Credits : Romain Heriteau & Léane Diraison (Design)</footer>
 </template>
 
 <style scoped>
@@ -26,6 +26,7 @@ footer {
   justify-content: center;
   padding: 10px;
   color: #3686e4;
+  background-color: #040a25;
   font-family: Exo, sans-serif;
 }
 </style>

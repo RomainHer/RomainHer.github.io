@@ -124,6 +124,7 @@ const props = defineProps<{
   font-weight: bold;
   font-family: 'Exo', sans-serif;
   text-align: end;
+  font-size: 1.2em;
 }
 
 .experience-address {
