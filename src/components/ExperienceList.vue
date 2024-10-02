@@ -1,40 +1,47 @@
 <template>
   <div id="experience-content">
-    <div class="title-content">
-      <div class="title-content-en">Work Experience 🎓</div>
-      <div class="title-content-fr">Expérience Professionnelle</div>
-    </div>
-    <div class="experience-list-content">
-      <div class="history-bar"></div>
-      <div class="experience-list">
-        <div
-          v-for="experience in props.experiences"
-          :key="experience.title"
-          class="experience-item"
-        >
-          <div class="title">
-            <div class="title-text">
-              <div>{{ experience.title + ' - ' + experience.company }}</div>
-              <div class="experience-address">{{ experience.address }}</div>
-            </div>
-            <div class="history-point" :class="{ 'blue-point': experience.type == 'study' }"></div>
-          </div>
+    <div class="center-content">
+      <div class="title-content">
+        <div class="title-content-en">Work Experience 🎓</div>
+        <div class="title-content-fr">Expérience Professionnelle</div>
+      </div>
+      <div class="experience-list-content">
+        <div class="history-bar"></div>
+        <div class="experience-list">
           <div
-            class="terminal-container no-shadow"
-            :class="{
-              'tc-light': experience.type == 'study',
-              'tc-orange': experience.type != 'study'
-            }"
+            v-for="experience in props.experiences"
+            :key="experience.title"
+            class="experience-item"
           >
-            <span v-if="experience.startYear < experience.endYear">
-              {{ experience.startYear }} - {{ experience.endYear }}
-            </span>
-            <span v-else-if="experience.startYear > experience.endYear">
-              {{ experience.endYear }} - {{ experience.startYear }}
-            </span>
-            <span v-else>{{ experience.startYear }}</span>
+            <div class="title">
+              <div class="title-text">
+                <div>{{ experience.title + ' - ' + experience.company }}</div>
+                <div class="experience-address">{{ experience.address }}</div>
+              </div>
+              <div
+                class="history-point"
+                :class="{ 'blue-point': experience.type == 'study' }"
+              ></div>
+            </div>
+            <div
+              class="terminal-container no-shadow"
+              :class="{
+                'tc-light': experience.type == 'study',
+                'tc-orange': experience.type != 'study'
+              }"
+            >
+              <span v-if="experience.startYear < experience.endYear">
+                {{ experience.startYear }} - {{ experience.endYear }}
+              </span>
+              <span v-else-if="experience.startYear > experience.endYear">
+                {{ experience.endYear }} - {{ experience.startYear }}
+              </span>
+              <span v-else>{{ experience.startYear }}</span>
+            </div>
+            <div v-if="experience.description != ''" class="description">
+              {{ experience.description }}
+            </div>
           </div>
-          <div>{{ experience.description }}</div>
         </div>
       </div>
     </div>
@@ -59,6 +66,13 @@ const props = defineProps<{
 
 <style scoped>
 #experience-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-content {
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -114,6 +128,12 @@ const props = defineProps<{
 
 .experience-address {
   font-weight: normal;
+}
+
+.description {
+  white-space: pre-wrap;
+  text-align: end;
+  width: 100%;
 }
 
 .history-point {
