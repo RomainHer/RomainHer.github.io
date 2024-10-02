@@ -128,6 +128,11 @@ const props = defineProps<{
   font-size: 1.2em;
 }
 
+.title-content-fr {
+  left: 30px;
+  top: 23px;
+}
+
 .experience-address {
   font-weight: normal;
 }

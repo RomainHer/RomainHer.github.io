@@ -48,6 +48,20 @@ function isCenter(slide: { position: string }) {
 
 <template>
   <div id="projects-content">
+    <div class="intro-content">
+      <div class="title-content">
+        <div class="title-content-en">Work I'm proud of ⚡</div>
+        <div class="title-content-fr">Quelques uns de mes projets</div>
+      </div>
+      <div class="intro-description">
+        Vous pouvez retrouver ici des projets sur lesquels j'ai travaillé. Que ce soit dans le cadre
+        de mes études ou en dehors, ces projets m'ont permis d'approfondir mes compétences dans le
+        développement web et mobile, surtout sur le front-end. Ces exemples montrent à quoi pourrait
+        ressembler votre projet si vous décidez de travailler avec moi. Pour plus d'informations sur
+        ces projets et sur mes compétences, n'hésitez pas à me contacter ou à consulter mon
+        <a href="https://github.com/RomainHer" target="_blank">GitHub</a>.
+      </div>
+    </div>
     <div class="carousel-container">
       <div @click="moveLeft">
         <img
@@ -88,10 +102,22 @@ function isCenter(slide: { position: string }) {
 
 <style scoped>
 #projects-content {
+  border: 1px solid #000;
+  padding: 50px;
+  margin: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.intro-content {
+  align-self: start;
+}
+
+.title-content-fr {
+  left: 30px;
+  top: 23px;
 }
 
 .pagination {
@@ -117,6 +143,8 @@ function isCenter(slide: { position: string }) {
 }
 
 .carousel-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
