@@ -1,19 +1,34 @@
 <script setup lang="ts">
+import htmlLogo from '@/assets/images/html.png'
+import cssLogo from '@/assets/images/css.png'
+import jsLogo from '@/assets/images/js.png'
+import vueLogo from '@/assets/images/vuejs.png'
+import reactLogo from '@/assets/images/react.png'
+import flutterLogo from '@/assets/images/flutter.png'
+import tsLogo from '@/assets/images/ts.png'
+import nodejsLogo from '@/assets/images/nodejs.png'
+import githubLogo from '@/assets/images/github.png'
+import gitlabLogo from '@/assets/images/gitlab.png'
+import javaLogo from '@/assets/images/java.png'
+import scalaLogo from '@/assets/images/scala.png'
+import pythonLogo from '@/assets/images/python.png'
+import trelloLogo from '@/assets/images/trello.png'
+
 const imageList = [
-  { name: 'HTML', path: '/src/assets/technologies/html.png' },
-  { name: 'CSS', path: '/src/assets/technologies/css.png' },
-  { name: 'JavaScript', path: '/src/assets/technologies/js.png' },
-  { name: 'Vue', path: '/src/assets/technologies/vuejs.png' },
-  { name: 'React', path: '/src/assets/technologies/react.png' },
-  { name: 'Flutter', path: '/src/assets/technologies/flutter.png' },
-  { name: 'TypeScript', path: '/src/assets/technologies/ts.png' },
-  { name: 'Node.js', path: '/src/assets/technologies/nodejs.png' },
-  { name: 'GitHub', path: '/src/assets/technologies/github.png' },
-  { name: 'GitLab', path: '/src/assets/technologies/gitlab.png' },
-  { name: 'Java', path: '/src/assets/technologies/java.png' },
-  { name: 'Scala', path: '/src/assets/technologies/scala.png' },
-  { name: 'Python', path: '/src/assets/technologies/python.png' },
-  { name: 'Trello', path: '/src/assets/technologies/trello.png' }
+  { name: 'HTML', path: htmlLogo },
+  { name: 'CSS', path: cssLogo },
+  { name: 'JavaScript', path: jsLogo },
+  { name: 'Vue', path: vueLogo },
+  { name: 'React', path: reactLogo },
+  { name: 'Flutter', path: flutterLogo },
+  { name: 'TypeScript', path: tsLogo },
+  { name: 'Node.js', path: nodejsLogo },
+  { name: 'GitHub', path: githubLogo },
+  { name: 'GitLab', path: gitlabLogo },
+  { name: 'Java', path: javaLogo },
+  { name: 'Scala', path: scalaLogo },
+  { name: 'Python', path: pythonLogo },
+  { name: 'Trello', path: trelloLogo }
 ]
 </script>
 

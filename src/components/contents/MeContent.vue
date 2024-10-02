@@ -11,7 +11,7 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
 
 <template>
   <div id="me-content">
-    <img src="../../assets/images/avatar.png" alt="me" class="me-image" />
+    <img src="@/assets/images/avatar.png" alt="me" class="me-image" />
     <div class="about-me">
       <div class="title-content">
         <div class="title-content-en">About me <span style="visibility: hidden">-</span>👋</div>
