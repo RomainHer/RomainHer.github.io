@@ -107,7 +107,7 @@ function openInNewTab(url: string) {
     </div>
     <div class="discover-link">
       <div>READY TO DISCOVER MY WORK</div>
-      <a href="#project-page"
+      <a href="#projects-content"
         ><img src="../../assets/icons/down-arrow.svg" alt="icon down" id="icon-down"
       /></a>
     </div>
