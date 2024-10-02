@@ -3,6 +3,7 @@ import ContactContent from './contents/ContactContent.vue'
 import HomeContent from './contents/HomeContent.vue'
 import MeContent from './contents/MeContent.vue'
 import ProjectsContent from './contents/ProjectsContent.vue'
+import TechnologiesContent from './contents/TechnologiesContent.vue'
 import ExperienceContent from './contents/ExperienceContent.vue'
 
 const experiencesContent = [
@@ -61,6 +62,7 @@ const experiencesContent = [
   <div class="separator"></div>
   <MeContent />
   <ExperienceContent :experiences="experiencesContent" />
+  <TechnologiesContent />
   <ProjectsContent />
   <ContactContent />
 </template>
