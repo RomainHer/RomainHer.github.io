@@ -1,4 +1,80 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import emailjs from '@emailjs/browser'
+
+const timeout = 4000
+const email = ref('')
+const emailError = ref('')
+const name = ref('')
+const title = ref('')
+const message = ref('')
+const validationAlert = ref(false)
+const errorAlert = ref(false)
+const errorMessage = ref('')
+const errorEmailAlert = ref(false)
+const errorNotCompletedAlert = ref(false)
+
+function showAlert(alertType: string) {
+  if (alertType === 'validation') {
+    validationAlert.value = true
+    setTimeout(() => {
+      validationAlert.value = false
+    }, timeout)
+  } else if (alertType === 'error') {
+    errorAlert.value = true
+    setTimeout(() => {
+      errorAlert.value = false
+    }, timeout)
+  } else if (alertType === 'emailError') {
+    errorEmailAlert.value = true
+    setTimeout(() => {
+      errorEmailAlert.value = false
+    }, timeout)
+  } else if (alertType === 'notCompetedError') {
+    errorNotCompletedAlert.value = true
+    setTimeout(() => {
+      errorNotCompletedAlert.value = false
+    }, timeout)
+  }
+}
+
+const validateEmail = () => {
+  const emailPattern = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim
+  if (!emailPattern.test(email.value)) {
+    emailError.value = 'Veuillez entrer une adresse email valide'
+  } else {
+    emailError.value = ''
+  }
+}
+
+function submitForm() {
+  if (name.value == '' || email.value == '' || title.value == '' || message.value == '') {
+    showAlert('notCompetedError')
+  } else if (emailError.value != '') {
+    showAlert('emailError')
+  } else {
+    emailjs.sendForm('service_kx3lmiz', 'template_9a87ktd', '#contact-form').then(
+      () => {
+        showAlert('validation')
+        name.value = ''
+        email.value = ''
+        title.value = ''
+        message.value = ''
+      },
+      (error) => {
+        errorMessage.value = error
+        showAlert('error')
+      }
+    )
+  }
+}
+
+onMounted(() => {
+  emailjs.init({
+    publicKey: 'Kl2imbL-5M-nbn11K'
+  })
+})
+</script>
 
 <template>
   <div id="contact-content" class="content">
@@ -7,8 +83,21 @@
         <div class="title-content-en">Contact me</div>
         <div class="contact-title-fr title-content-fr">Me contacter</div>
       </div>
-      <form action="" class="contact-form">
+      <form action="" id="contact-form" ref="contact-form">
         <div class="contact-form-box">
+          <div v-if="validationAlert" class="validation-alert">
+            Your message has been sent successfully
+          </div>
+          <div v-if="errorAlert" class="error-alert">
+            <div>An error occurred while sending the message :</div>
+            <div>{{ errorMessage }}</div>
+          </div>
+          <div v-if="errorEmailAlert" class="error-alert">
+            <div>Your email is not valide</div>
+          </div>
+          <div v-if="errorNotCompletedAlert" class="error-alert">
+            Complete all the inputs before sending an email
+          </div>
           <div class="contact-form-personal-info">
             <input
               class="contact-input"
@@ -16,14 +105,21 @@
               name="contact-form-name"
               id="contact-form-name"
               placeholder="Name"
+              v-model="name"
             />
-            <input
-              class="contact-input"
-              type="text"
-              name="contact-form-email"
-              id="contact-form-email"
-              placeholder="Email"
-            />
+            <div class="contact-form-email-container">
+              <input
+                class="contact-input"
+                type="text"
+                name="contact-form-email"
+                id="contact-form-email"
+                placeholder="Email"
+                v-model="email"
+                @input="validateEmail"
+                :class="{ 'contact-input-error': emailError && email != '' }"
+              />
+              <div class="text-error">{{ emailError }}</div>
+            </div>
           </div>
           <input
             class="contact-input"
@@ -31,6 +127,7 @@
             name="contact-form-title"
             id="contact-form-title"
             placeholder="Title"
+            v-model="title"
           />
           <textarea
             class="contact-input"
@@ -39,8 +136,9 @@
             cols="30"
             rows="10"
             placeholder="Message"
+            v-model="message"
           ></textarea>
-          <div class="terminal-container tc-light tc-light-button">
+          <div class="terminal-container tc-light tc-light-button" @click="submitForm">
             <span>Send</span>
           </div>
         </div>
@@ -81,7 +179,7 @@
   left: 40px;
 }
 
-.contact-form {
+#contact-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,6 +187,26 @@
   -webkit-box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
   -moz-box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
   box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
+}
+
+.validation-alert {
+  background-color: #d4edda;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  border: solid 1px #5cb85c;
+  color: #5cb85c;
+  margin-bottom: 20px;
+}
+
+.error-alert {
+  background-color: #f8d7da;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  border: solid 1px #d9534f;
+  color: #d9534f;
+  margin-bottom: 20px;
 }
 
 .contact-form-box {
@@ -114,12 +232,21 @@ textarea {
   margin-bottom: 20px;
 }
 
+.text-error {
+  color: #d9534f;
+}
+
 #contact-form-name {
   width: 30%;
+  max-height: fit-content;
+}
+
+.contact-form-email-container {
+  width: 65%;
 }
 
 #contact-form-email {
-  width: 65%;
+  width: 100%;
 }
 
 .contact-input {
@@ -130,6 +257,11 @@ textarea {
   font-family: Exo, sans-serif;
   font-size: 20px;
   font-weight: bold;
+}
+
+.contact-input-error {
+  background-color: #f8d7da;
+  border: solid 1px #d9534f;
 }
 
 .contact-input::placeholder {

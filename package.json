@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "vue": "^3.4.29",
     "vue-carousel-3d": "^1.0.1",
     "vue3-carousel": "^0.3.4"

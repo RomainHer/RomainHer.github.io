@@ -29,6 +29,8 @@ body {
   border-radius: 7px;
   font-family: 'Spline Sans Mono', monospace;
   font-weight: 700;
+  user-select: none;
+  cursor: pointer;
   -webkit-box-shadow: 0px 2px 10px rgb(0 0 0 / 10%);
   -moz-box-shadow: 0px 2px 10px rgb(0 0 0 / 10%);
   box-shadow: 0px 2px 10px rgb(0 0 0 / 10%);
