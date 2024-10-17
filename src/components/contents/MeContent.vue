@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
+
 async function downloadPdf(pdfPath: string, pdfName: string) {
   // Utilisation de l'import dynamique
   const link = document.createElement('a')
@@ -11,7 +15,7 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
 
 <template>
   <div id="me-content">
-    <img src="@/assets/images/avatar.png" alt="me" class="me-image" />
+    <img v-if="width >= 850" src="@/assets/images/avatar.png" alt="me" class="me-image" />
     <div class="about-me">
       <div class="title-content">
         <div class="title-content-en">About me <span style="visibility: hidden">-</span>👋</div>
@@ -36,7 +40,25 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
 </template>
 
 <style scoped>
+@media (min-width: 850px) {
+  .about-me {
+    margin: 50px 50px 50px 250px;
+    padding: 30px 40px 30px 120px;
+  }
+}
+
+@media (max-width: 849px) {
+  .about-me {
+    /*margin-left: 50px;
+    padding-left: 40px;*/
+    padding: 4vw 5vw;
+    margin: 5vw;
+  }
+}
+
 #me-content {
+  justify-self: center;
+  max-width: 1090px;
   position: relative;
   background-color: white;
   display: flex;
@@ -47,25 +69,20 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
 .me-image {
   position: absolute;
   left: 50px;
-  height: 280px;
+  width: 30vw;
+  max-width: 280px;
   padding-top: 10px;
   padding-bottom: 5px;
   background-color: white;
 }
 
 .about-me {
-  margin: 50px;
-  padding: 30px;
-  margin-left: 250px;
-  padding-left: 120px;
-  padding-right: 40px;
   border: solid 1px black;
   color: black;
 }
 
 .about-me-content {
   font-family: 'Spline Sans Mono', monospace;
-  font-size: 20px;
   text-align: justify;
   padding-bottom: 30px;
 }

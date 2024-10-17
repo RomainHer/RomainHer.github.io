@@ -115,12 +115,57 @@ function openInNewTab(url: string) {
 </template>
 
 <style scoped>
+@media (max-width: 680px) {
+  .home-page-center {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .welcome-title {
+    font-size: 10vw;
+  }
+
+  .my-name {
+    font-size: 7vw;
+  }
+
+  .my-name-colored {
+    font-size: 9vw;
+  }
+}
+
+@media (min-width: 679px) {
+  .home-page-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .welcome-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .welcome-title {
+    padding-left: 45px;
+    font-size: 80px;
+  }
+
+  .my-name {
+    font-size: 25px;
+  }
+
+  .my-name-colored {
+    font-size: 40px;
+  }
+}
+
 #home-content {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   overflow: visible;
   background-color: #040a25;
   color: white;
@@ -130,16 +175,9 @@ function openInNewTab(url: string) {
   padding-top: 40px;
   color: white;
   width: 70%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .welcome-title {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  padding-left: 45px;
-  font-size: 80px;
   font-weight: 700;
   font-family: 'Exo', sans-serif;
   color: #3a5bdc;
@@ -152,7 +190,6 @@ function openInNewTab(url: string) {
 }
 
 .my-name-colored {
-  font-size: 40px;
   color: #ffc857;
 }
 

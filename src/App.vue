@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import NavBar from './components/NavBar.vue'
 import ContentContainer from './components/ContentContainer.vue'
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
 </script>
 
 <template>
-  <NavBar />
+  <NavBar v-if="width >= 450" />
 
   <main class="content">
     <ContentContainer />
@@ -14,11 +17,10 @@ import ContentContainer from './components/ContentContainer.vue'
 </template>
 
 <style scoped>
-div {
-  color: red;
-}
-.content {
-  margin-left: 71px;
+@media (min-width: 450px) {
+  .content {
+    margin-left: 71px;
+  }
 }
 
 footer {

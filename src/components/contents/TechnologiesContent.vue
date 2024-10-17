@@ -58,6 +58,7 @@ const imageList = [
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .center-content {
@@ -77,6 +78,7 @@ const imageList = [
 }
 
 .technologies-content-image {
-  height: 100px;
+  height: 5vw;
+  min-height: 50px;
 }
 </style>

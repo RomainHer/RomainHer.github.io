@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { useWindowSize } from '@vueuse/core'
 import { ref } from 'vue'
 
+const { width } = useWindowSize()
 const slides = ref([
   { number: 0, color: 'aqua', position: 'left' },
   { number: 1, color: 'red', position: 'center' },
@@ -62,7 +64,7 @@ function isCenter(slide: { position: string }) {
         <a href="https://github.com/RomainHer" target="_blank">GitHub</a>.
       </div>
     </div>
-    <div class="carousel-container">
+    <div v-if="width >= 850" class="carousel-container">
       <div @click="moveLeft">
         <img
           src="../../assets/icons/left-chevron-svgrepo-com.svg"
@@ -74,7 +76,7 @@ function isCenter(slide: { position: string }) {
         <div
           v-for="slide in slides"
           :key="slide.number"
-          class="card slide"
+          class="slide"
           :class="slide.position"
           :style="{ backgroundColor: slide.color }"
         >
@@ -101,14 +103,30 @@ function isCenter(slide: { position: string }) {
 </template>
 
 <style scoped>
+@media (min-width: 850px) {
+  #projects-content {
+    padding: 50px;
+    margin: 50px;
+  }
+}
+
+@media (max-width: 849px) {
+  #projects-content {
+    /*margin-left: 50px;
+    padding-left: 40px;*/
+    padding: 5vw;
+    margin: 5vw;
+  }
+}
+
 #projects-content {
   border: 1px solid #000;
-  padding: 50px;
-  margin: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1300px;
+  justify-self: center;
 }
 
 .intro-content {
@@ -148,10 +166,11 @@ function isCenter(slide: { position: string }) {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .card {
-  width: 400px;
+  width: 60%;
   height: 500px;
   color: #111;
 }
@@ -165,14 +184,16 @@ function isCenter(slide: { position: string }) {
   z-index: 0;
   position: relative;
   perspective: 1000px;
-  margin-left: 250px;
-  margin-right: 250px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .slide {
   position: absolute;
   top: 0px;
   left: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 .center {
@@ -208,7 +229,7 @@ function isCenter(slide: { position: string }) {
 
 .left {
   z-index: 2;
-  transform: translateX(-400px) translateZ(-400px);
+  transform: translateX(-50%) translateZ(-400px);
 }
 
 .left-from-center {
@@ -239,7 +260,7 @@ function isCenter(slide: { position: string }) {
 
 .right {
   z-index: 1;
-  transform: translateX(400px) translateZ(-400px);
+  transform: translateX(50%) translateZ(-400px);
 }
 
 .right-from-center {
@@ -335,7 +356,7 @@ function isCenter(slide: { position: string }) {
 
 @keyframes center-from-left {
   from {
-    transform: translateX(-400px) translateZ(-400px);
+    transform: translateX(-50%) translateZ(-400px);
   }
   to {
     transform: translateX(0px) translateZ(0px);
@@ -344,7 +365,7 @@ function isCenter(slide: { position: string }) {
 
 @keyframes center-from-right {
   from {
-    transform: translateX(400px) translateZ(-400px);
+    transform: translateX(50%) translateZ(-400px);
   }
   to {
     transform: translateX(0px) translateZ(0px);
@@ -356,16 +377,16 @@ function isCenter(slide: { position: string }) {
     transform: translateX(0px) translateZ(0px);
   }
   to {
-    transform: translateX(-400px) translateZ(-400px);
+    transform: translateX(-50%) translateZ(-400px);
   }
 }
 
 @keyframes left-from-right {
   from {
-    transform: translateX(400px) translateZ(-400px);
+    transform: translateX(50%) translateZ(-400px);
   }
   to {
-    transform: translateX(-400px) translateZ(-400px);
+    transform: translateX(-50%) translateZ(-400px);
   }
 }
 
@@ -374,16 +395,16 @@ function isCenter(slide: { position: string }) {
     transform: translateX(0px) translateZ(0px);
   }
   to {
-    transform: translateX(400px) translateZ(-400px);
+    transform: translateX(50%) translateZ(-400px);
   }
 }
 
 @keyframes right-from-left {
   from {
-    transform: translateX(-400px) translateZ(-400px);
+    transform: translateX(-50%) translateZ(-400px);
   }
   to {
-    transform: translateX(400px) translateZ(-400px);
+    transform: translateX(50%) translateZ(-400px);
   }
 }
 </style>

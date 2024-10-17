@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import emailjs from '@emailjs/browser'
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
 
 const timeout = 4000
 const email = ref('')
@@ -134,7 +137,7 @@ onMounted(() => {
             name="contact-form-message"
             id="contact-form-message"
             cols="30"
-            rows="10"
+            :rows="width >= 850 ? 10 : 6"
             placeholder="Message"
             v-model="message"
           ></textarea>
@@ -148,6 +151,76 @@ onMounted(() => {
 </template>
 
 <style scoped>
+@media (min-width: 850px) {
+  .contact-box {
+    margin: 30px;
+  }
+
+  .contact-form-box {
+    padding: 40px 40px 0px 40px;
+  }
+
+  .validation-alert {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .error-alert {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact-input {
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .contact-form-box > input,
+  textarea {
+    margin-bottom: 20px;
+  }
+
+  .contact-form-personal-info {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 849px) {
+  .contact-box {
+    /*margin-left: 50px;
+    padding-left: 40px;*/
+    margin: 3vw;
+  }
+
+  .contact-form-box {
+    padding: 4vw 4vw 0px 4vw;
+  }
+
+  .validation-alert {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .error-alert {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .contact-input {
+    padding: 7px;
+    font-size: 15px;
+  }
+
+  .contact-form-box > input,
+  textarea {
+    margin-bottom: 12px;
+  }
+
+  .contact-form-personal-info {
+    margin-bottom: 12px;
+  }
+}
+
 #contact-content {
   display: flex;
   justify-content: center;
@@ -156,7 +229,6 @@ onMounted(() => {
 }
 
 .contact-box {
-  margin: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 15px;
@@ -193,34 +265,28 @@ onMounted(() => {
   background-color: #d4edda;
   width: 100%;
   text-align: center;
-  padding: 20px;
   border: solid 1px #5cb85c;
   color: #5cb85c;
-  margin-bottom: 20px;
 }
 
 .error-alert {
   background-color: #f8d7da;
   width: 100%;
   text-align: center;
-  padding: 20px;
   border: solid 1px #d9534f;
   color: #d9534f;
-  margin-bottom: 20px;
 }
 
 .contact-form-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 40px 0px 40px;
   width: 100%;
   max-width: 900px;
 }
 
 .contact-form-box > input,
 textarea {
-  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -229,7 +295,6 @@ textarea {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .text-error {
@@ -250,12 +315,10 @@ textarea {
 }
 
 .contact-input {
-  padding: 10px;
   border-radius: 0px;
   border: 1px solid #040a25;
   color: #3d3d3d;
   font-family: Exo, sans-serif;
-  font-size: 20px;
   font-weight: bold;
 }
 

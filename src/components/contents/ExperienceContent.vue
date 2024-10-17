@@ -65,6 +65,30 @@ const props = defineProps<{
 </script>
 
 <style scoped>
+@media (min-width: 850px) {
+  .experience-list-content {
+    max-width: 70%;
+  }
+
+  .center-content {
+    width: 90%;
+  }
+
+  .history-bar {
+    margin-right: 60px;
+  }
+}
+
+@media (max-width: 849px) {
+  .experience-list-content {
+    margin-left: 30px;
+  }
+
+  .history-bar {
+    margin-right: 30px;
+  }
+}
+
 #experience-content {
   width: 100%;
   display: flex;
@@ -74,7 +98,6 @@ const props = defineProps<{
 }
 
 .center-content {
-  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -94,7 +117,6 @@ const props = defineProps<{
 
 .history-bar {
   margin-left: 30px;
-  margin-right: 60px;
   width: 1px;
   background-color: black;
 }

@@ -1,3 +1,9 @@
+/*
+Designs ranging from 1280×720 to 1920×1080 for desktop monitors
+Mobile display design ranging from 360×640 to 414×896
+Tablet display design ranging from 601×962 to 1280×800
+*/
+
 *,
 *:after,
 *:before {
@@ -73,25 +79,52 @@ body {
   color: black;
 }
 
+@media (min-width: 850px) {
+  .title-content {
+    padding-bottom: 30px;
+  }
+
+  .title-content-en {
+    font-size: 40px;
+  }
+
+  .title-content-fr {
+    top: 20px;
+    left: 20px;
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 849px) {
+  .title-content {
+    padding-bottom: 30px;
+  }
+
+  .title-content-en {
+    font-size: 30px;
+  }
+
+  .title-content-fr {
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+  }
+}
+
 .title-content {
   position: relative;
-  padding-bottom: 30px;
   overflow: visible;
 }
 
 .title-content-en {
   font-family: 'Exo', sans-serif;
-  font-size: 40px;
   font-weight: 700;
   color: #040a25;
 }
 
 .title-content-fr {
   position: absolute;
-  top: 20px;
-  left: 20px;
   font-family: 'Birthstone', cursive;
-  font-size: 40px;
   background: linear-gradient(to right, #40dbef, #30b2ec 27%, #2f51d5 61%);
   background-clip: text;
   width: fit-content;
