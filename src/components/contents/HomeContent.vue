@@ -130,7 +130,15 @@ function openInNewTab(url: string) {
   }
 
   .my-name-colored {
-    font-size: 9vw;
+    font-size: 8vw;
+  }
+
+  .description {
+    font-size: 3vw;
+  }
+
+  .discover-link {
+    font-size: 4vw;
   }
 }
 
@@ -158,6 +166,18 @@ function openInNewTab(url: string) {
   .my-name-colored {
     font-size: 40px;
   }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .fr-des {
+    font-size: 13px;
+  }
+
+  .discover-link {
+    font-size: 20px;
+  }
 }
 
 #home-content {
@@ -175,6 +195,7 @@ function openInNewTab(url: string) {
   padding-top: 40px;
   color: white;
   width: 70%;
+  max-width: 900px;
 }
 
 .welcome-title {
@@ -200,14 +221,12 @@ function openInNewTab(url: string) {
 
 .description {
   font-family: 'Spline Sans Mono', monospace;
-  font-size: 15px;
   text-align: justify;
   padding-bottom: 10px;
 }
 
 .fr-des {
   font-style: italic;
-  font-size: 13px;
   margin-bottom: 15px;
 }
 
@@ -241,7 +260,8 @@ function openInNewTab(url: string) {
 }
 
 .icon-link-list {
-  width: 55%;
+  width: 90%;
+  max-width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -270,7 +290,6 @@ function openInNewTab(url: string) {
   margin-top: 50px;
   font-family: 'Spline Sans Mono', monospace;
   font-weight: 300;
-  font-size: 20px;
   color: white;
   display: flex;
   flex-direction: column;

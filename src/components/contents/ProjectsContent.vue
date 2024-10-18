@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { useWindowSize } from '@vueuse/core'
 import { ref } from 'vue'
-
-const { width } = useWindowSize()
 const slides = ref([
   { number: 0, color: 'aqua', position: 'left' },
   { number: 1, color: 'red', position: 'center' },
@@ -64,12 +61,12 @@ function isCenter(slide: { position: string }) {
         <a href="https://github.com/RomainHer" target="_blank">GitHub</a>.
       </div>
     </div>
-    <div v-if="width >= 850" class="carousel-container">
+    <div class="carousel-container">
       <div @click="moveLeft">
         <img
           src="../../assets/icons/left-chevron-svgrepo-com.svg"
           alt="icon left"
-          class="chevron"
+          class="chevron chevron-left"
         />
       </div>
       <div class="card carousel">
@@ -87,7 +84,7 @@ function isCenter(slide: { position: string }) {
         <img
           src="../../assets/icons/right-chevron-svgrepo-com.svg"
           alt="icon left"
-          class="chevron"
+          class="chevron chevron-right"
         />
       </div>
     </div>
@@ -170,7 +167,6 @@ function isCenter(slide: { position: string }) {
 }
 
 .card {
-  width: 60%;
   height: 500px;
   color: #111;
 }
@@ -184,8 +180,6 @@ function isCenter(slide: { position: string }) {
   z-index: 0;
   position: relative;
   perspective: 1000px;
-  margin-left: 20%;
-  margin-right: 20%;
 }
 
 .slide {
@@ -229,7 +223,6 @@ function isCenter(slide: { position: string }) {
 
 .left {
   z-index: 2;
-  transform: translateX(-50%) translateZ(-400px);
 }
 
 .left-from-center {
@@ -260,7 +253,6 @@ function isCenter(slide: { position: string }) {
 
 .right {
   z-index: 1;
-  transform: translateX(50%) translateZ(-400px);
 }
 
 .right-from-center {
@@ -345,66 +337,176 @@ function isCenter(slide: { position: string }) {
   animation-fill-mode: forwards;
 }*/
 
-@keyframes slide {
-  from {
-    transform: translateX(var(--xStart)) translateZ(var(--zStart));
+@media (min-width: 850px) {
+  .card {
+    width: 60%;
   }
-  to {
-    transform: translateX(var(--xEnd)) translateZ(var(--zEnd));
-  }
-}
 
-@keyframes center-from-left {
-  from {
+  .carousel {
+    margin-left: 12%;
+    margin-right: 12%;
+  }
+
+  .left {
     transform: translateX(-50%) translateZ(-400px);
   }
-  to {
-    transform: translateX(0px) translateZ(0px);
-  }
-}
 
-@keyframes center-from-right {
-  from {
+  .right {
     transform: translateX(50%) translateZ(-400px);
   }
-  to {
-    transform: translateX(0px) translateZ(0px);
+
+  @keyframes slide {
+    from {
+      transform: translateX(var(--xStart)) translateZ(var(--zStart));
+    }
+    to {
+      transform: translateX(var(--xEnd)) translateZ(var(--zEnd));
+    }
+  }
+
+  @keyframes center-from-left {
+    from {
+      transform: translateX(-50%) translateZ(-400px);
+    }
+    to {
+      transform: translateX(0px) translateZ(0px);
+    }
+  }
+
+  @keyframes center-from-right {
+    from {
+      transform: translateX(50%) translateZ(-400px);
+    }
+    to {
+      transform: translateX(0px) translateZ(0px);
+    }
+  }
+
+  @keyframes left-from-center {
+    from {
+      transform: translateX(0px) translateZ(0px);
+    }
+    to {
+      transform: translateX(-50%) translateZ(-400px);
+    }
+  }
+
+  @keyframes left-from-right {
+    from {
+      transform: translateX(50%) translateZ(-400px);
+    }
+    to {
+      transform: translateX(-50%) translateZ(-400px);
+    }
+  }
+
+  @keyframes right-from-center {
+    from {
+      transform: translateX(0px) translateZ(0px);
+    }
+    to {
+      transform: translateX(50%) translateZ(-400px);
+    }
+  }
+
+  @keyframes right-from-left {
+    from {
+      transform: translateX(-50%) translateZ(-400px);
+    }
+    to {
+      transform: translateX(50%) translateZ(-400px);
+    }
   }
 }
 
-@keyframes left-from-center {
-  from {
-    transform: translateX(0px) translateZ(0px);
+@media (max-width: 849px) {
+  .carousel-container {
+    position: relative;
   }
-  to {
-    transform: translateX(-50%) translateZ(-400px);
-  }
-}
 
-@keyframes left-from-right {
-  from {
-    transform: translateX(50%) translateZ(-400px);
+  .chevron {
+    position: absolute;
   }
-  to {
-    transform: translateX(-50%) translateZ(-400px);
-  }
-}
 
-@keyframes right-from-center {
-  from {
-    transform: translateX(0px) translateZ(0px);
+  .chevron-left {
+    top: 45%;
+    left: 0px;
+    z-index: 10;
   }
-  to {
-    transform: translateX(50%) translateZ(-400px);
-  }
-}
 
-@keyframes right-from-left {
-  from {
-    transform: translateX(-50%) translateZ(-400px);
+  .chevron-right {
+    top: 45%;
+    right: 0px;
   }
-  to {
-    transform: translateX(50%) translateZ(-400px);
+
+  .card {
+    width: 100%;
+  }
+
+  .carousel {
+    overflow: hidden;
+  }
+
+  .left {
+    transform: translateX(-100%) translateZ(-400px);
+  }
+
+  .right {
+    transform: translateX(100%) translateZ(-400px);
+  }
+
+  @keyframes center-from-left {
+    from {
+      transform: translateX(-100%) translateZ(0px);
+    }
+    to {
+      transform: translateX(0px) translateZ(0px);
+    }
+  }
+
+  @keyframes center-from-right {
+    from {
+      transform: translateX(100%) translateZ(0px);
+    }
+    to {
+      transform: translateX(0px) translateZ(0px);
+    }
+  }
+
+  @keyframes left-from-center {
+    from {
+      transform: translateX(0px) translateZ(0px);
+    }
+    to {
+      transform: translateX(-100%) translateZ(0px);
+    }
+  }
+
+  @keyframes left-from-right {
+    from {
+      transform: translateX(100%) translateZ(0px);
+    }
+    to {
+      transform: translateX(-100%) translateZ(0px);
+    }
+  }
+
+  @keyframes right-from-center {
+    from {
+      transform: translateX(0px) translateZ(0px);
+    }
+    to {
+      transform: translateX(100%) translateZ(0px);
+    }
+  }
+
+  @keyframes right-from-left {
+    from {
+      transform: translateX(-100%) translateZ(0px);
+    }
+    to {
+      transform: translateX(100%) translateZ(0px);
+    }
   }
 }
 </style>
