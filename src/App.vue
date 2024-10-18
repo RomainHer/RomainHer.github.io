@@ -23,6 +23,12 @@ const { width } = useWindowSize()
   }
 }
 
+@media (max-width: 449px) {
+  footer {
+    font-size: 12px;
+  }
+}
+
 footer {
   display: flex;
   justify-content: center;
