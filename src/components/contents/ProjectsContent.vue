@@ -6,6 +6,46 @@ const slides = ref([
   { number: 2, color: 'green', position: 'right' }
 ])
 
+const projects = [
+  {
+    id: 0,
+    name: 'Maps.gg',
+    startDate: new Date(),
+    endDate: undefined,
+    image: '',
+    descriptionEN: '',
+    descriptionFR: '',
+    technologies: [],
+    missionsEN: '',
+    missionsFR: ''
+  },
+  {
+    id: 1,
+    name: 'FITi',
+    startDate: new Date(2023, 9),
+    endDate: new Date(2024, 3),
+    image: '',
+    descriptionEN:
+      'Mobile app to create and play sports session and also record all your nutrition',
+    descriptionFR: '',
+    technologies: [],
+    missionsEN: '',
+    missionsFR: ''
+  },
+  {
+    id: 2,
+    name: 'This web site',
+    startDate: new Date(2024, 9),
+    endDate: undefined,
+    image: '',
+    descriptionEN: 'My personal web site to presente me and all my projects',
+    descriptionFR: '',
+    technologies: ['Vue.js', 'HTML', 'CSS', 'TypeScript'],
+    missionsEN: '',
+    missionsFR: ''
+  }
+]
+
 function mod(n: number, m: number) {
   return ((n % m) + m) % m
 }
