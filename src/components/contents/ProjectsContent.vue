@@ -1,48 +1,103 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-const slides = ref([
-  { number: 0, color: 'aqua', position: 'left' },
-  { number: 1, color: 'red', position: 'center' },
-  { number: 2, color: 'green', position: 'right' }
+<script lang="ts">
+import {
+  ref
+} from 'vue'
+const slides = ref([{
+    number: 0,
+    color: 'aqua',
+    position: 'left'
+  },
+  {
+    number: 1,
+    color: 'red',
+    position: 'center'
+  },
+  {
+    number: 2,
+    color: 'green',
+    position: 'right'
+  }
 ])
 
-const projects = [
-  {
+const projects = [{
     id: 0,
     name: 'Maps.gg',
     startDate: new Date(),
     endDate: undefined,
-    image: '',
-    descriptionEN: '',
-    descriptionFR: '',
-    technologies: [],
-    missionsEN: '',
-    missionsFR: ''
+    image: 'projet-image-maps-gg.jpg',
+    descriptionEN: 'Mobile app to find video games tournaments near you, using a map and your geolocation',
+    descriptionFR: 'Application mobile qui permet de trouver des tournois de jeux vidéo près de chez vous, en utilisant une carte et votre géolocalisation',
+    technologies: ["Flutter", "Dart", "GraphQL", "API start.gg"],
+    missionsEN: [
+      "Integration of a map into the application",
+      "Integration of the start.gg API to retrieve tournaments",
+      "Geolocation management and permissions handling",
+      "Adding a modern and clean design",
+      "Adding filters for tournament display"
+    ],
+    missionsFR: [
+      "Intégration d'une carte dans l'application",
+      "Intégration de l'API start.gg pour récupérer les tournois",
+      "Gestion de la géolocalisation et des permissions",
+      "Ajout d'un style moderne et épuré",
+      "Ajout de filtres pour l'affichage des tournois"
+    ]
   },
   {
     id: 1,
     name: 'FITi',
     startDate: new Date(2023, 9),
     endDate: new Date(2024, 3),
-    image: '',
-    descriptionEN:
-      'Mobile app to create and play sports session and also record all your nutrition',
-    descriptionFR: '',
-    technologies: [],
-    missionsEN: '',
-    missionsFR: ''
+    image: 'projet-image-fiti-admin.png',
+    descriptionEN: 'Admin web app for a mobile app to create and participate in sports sessions with nutrition tracking. This web app allows you to manage the data of the mobile app such as users, sports sessions and meals through an ergonomic graphical interface.',
+    descriptionFR: 'Application  web d\'administration pour une application mobile de création et de participation à des séances de sport avec un suivi de la nutrition. Cette application web permet de gerer les données de l\'app mobile comme les utilisateur les séances de sport et les repas grace à une interface graphique ergonomique.',
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
+    missionsEN: [
+      "Create tables for each of the database tables",
+      "Add filters to sort the data",
+      "Add a form to add, modify, and delete data",
+      "Add a list to select the columns to display",
+      "Manage user authentication and different permissions",
+      "Handle responsive design",
+      "Work in a team following agile best practices (Scrum and Kanban)",
+    ],
+    missionsFR: [
+      "Creer des tableaux pour chacunes des tables de la base de données",
+      "Ajout des filtres pour trier les données",
+      "Ajout un formulaire pour ajouter, modifier et supprimer des données",
+      "Ajout d'un liste pour selectionner les colonnes à afficher",
+      "Gestion de l'authentification des utilisateurs et des differentes permissions",
+      "Prise en charge du responsive design",
+      "Travaille en equipe en suivant les bonnes pratiques agiles (Scrum et Kanban)",
+    ]
   },
   {
     id: 2,
     name: 'This web site',
     startDate: new Date(2024, 9),
     endDate: undefined,
-    image: '',
-    descriptionEN: 'My personal web site to presente me and all my projects',
-    descriptionFR: '',
+    image: 'projet-image-site-perso.png',
+    descriptionEN: 'My personal website (this website) to introduce myself and showcase all my projects, like an online resume or portfolio.',
+    descriptionFR: 'Mon site web personnel (ce site web) pour me présenter ainsi que tous mes projets, comme un CV en ligne ou un portfolio.',
     technologies: ['Vue.js', 'HTML', 'CSS', 'TypeScript'],
-    missionsEN: '',
-    missionsFR: ''
+    missionsEN: [
+      'Creation of the site structure',
+      'Adding content',
+      'Adding CSS animations to make the site more dynamic',
+      'Adding simple navigation with a menu',
+      'Creating a project carousel with CSS animations',
+      'Creating a functional contact form with emailjs',
+      'Adding responsive design for mobile use',
+    ],
+    missionsFR: [
+      'Création de la structure du site',
+      'Ajout du contenu',
+      'Ajout d\'animations css pour rendre le site plus dynamique',
+      'Ajout de la navigation simple avec un menu',
+      'Creation d\'un carousel pour les projets, avec des animations faite en css',
+      'Création d\'un formulaire de contact fonctionnel avec emailjs',
+      'Ajout du responsive design pour une utilisation sur mobile',
+    ]
   }
 ]
 
@@ -80,63 +135,46 @@ function moveRight() {
   }
 }
 
-function isCenter(slide: { position: string }) {
+function isCenter(slide: {
+  position: string
+}) {
   return slide.position.startsWith('center')
 }
 </script>
 
 <template>
-  <div id="projects-content">
-    <div class="intro-content">
-      <div class="title-content">
-        <div class="title-content-en">Work I'm proud of ⚡</div>
-        <div class="title-content-fr">Quelques uns de mes projets</div>
-      </div>
-      <div class="intro-description">
-        Vous pouvez retrouver ici des projets sur lesquels j'ai travaillé. Que ce soit dans le cadre
-        de mes études ou en dehors, ces projets m'ont permis d'approfondir mes compétences dans le
-        développement web et mobile, surtout sur le front-end. Ces exemples montrent à quoi pourrait
-        ressembler votre projet si vous décidez de travailler avec moi. Pour plus d'informations sur
-        ces projets et sur mes compétences, n'hésitez pas à me contacter ou à consulter mon
-        <a href="https://github.com/RomainHer" target="_blank">GitHub</a>.
-      </div>
+<div id="projects-content">
+  <div class="intro-content">
+    <div class="title-content">
+      <div class="title-content-en">Work I'm proud of ⚡</div>
+      <div class="title-content-fr">Quelques uns de mes projets</div>
     </div>
-    <div class="carousel-container">
-      <div @click="moveLeft">
-        <img
-          src="../../assets/icons/left-chevron-svgrepo-com.svg"
-          alt="icon left"
-          class="chevron chevron-left"
-        />
-      </div>
-      <div class="card carousel">
-        <div
-          v-for="slide in slides"
-          :key="slide.number"
-          class="slide"
-          :class="slide.position"
-          :style="{ backgroundColor: slide.color }"
-        >
-          {{ slide.number }}
-        </div>
-      </div>
-      <div @click="moveRight">
-        <img
-          src="../../assets/icons/right-chevron-svgrepo-com.svg"
-          alt="icon left"
-          class="chevron chevron-right"
-        />
-      </div>
-    </div>
-    <div class="pagination">
-      <div
-        v-for="slide in slides"
-        :key="slide.number"
-        class="page-circle"
-        :class="{ 'page-circle-current': isCenter(slide) }"
-      ></div>
+    <div class="intro-description">
+      Vous pouvez retrouver ici des projets sur lesquels j'ai travaillé. Que ce soit dans le cadre
+      de mes études ou en dehors, ces projets m'ont permis d'approfondir mes compétences dans le
+      développement web et mobile, surtout sur le front-end. Ces exemples montrent à quoi pourrait
+      ressembler votre projet si vous décidez de travailler avec moi. Pour plus d'informations sur
+      ces projets et sur mes compétences, n'hésitez pas à me contacter ou à consulter mon
+      <a href="https://github.com/RomainHer" target="_blank">GitHub</a>.
     </div>
   </div>
+  <div class="carousel-container">
+    <div @click="moveLeft">
+      <img src="../../assets/icons/left-chevron-svgrepo-com.svg" alt="icon left" class="chevron chevron-left" />
+    </div>
+    <div class="card carousel">
+      <div v-for="slide in slides" :key="slide.number" class="slide" :class="slide.position" :style="{ backgroundColor: slide.color }">
+        {{ slide.number }}
+      </div>
+    </div>
+    <div @click="moveRight">
+      <img src="../../assets/icons/right-chevron-svgrepo-com.svg" alt="icon left" class="chevron chevron-right" />
+    </div>
+  </div>
+  <div class="pagination">
+    <div v-for="slide in slides" :key="slide.number" class="page-circle" :class="{ 'page-circle-current': isCenter(slide) }"></div>
+  </div>
+</div>
 </template>
 
 <style scoped>
@@ -399,6 +437,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(var(--xStart)) translateZ(var(--zStart));
     }
+
     to {
       transform: translateX(var(--xEnd)) translateZ(var(--zEnd));
     }
@@ -408,6 +447,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(-50%) translateZ(-400px);
     }
+
     to {
       transform: translateX(0px) translateZ(0px);
     }
@@ -417,6 +457,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(50%) translateZ(-400px);
     }
+
     to {
       transform: translateX(0px) translateZ(0px);
     }
@@ -426,6 +467,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(0px) translateZ(0px);
     }
+
     to {
       transform: translateX(-50%) translateZ(-400px);
     }
@@ -435,6 +477,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(50%) translateZ(-400px);
     }
+
     to {
       transform: translateX(-50%) translateZ(-400px);
     }
@@ -444,6 +487,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(0px) translateZ(0px);
     }
+
     to {
       transform: translateX(50%) translateZ(-400px);
     }
@@ -453,6 +497,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(-50%) translateZ(-400px);
     }
+
     to {
       transform: translateX(50%) translateZ(-400px);
     }
@@ -499,6 +544,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(-100%) translateZ(0px);
     }
+
     to {
       transform: translateX(0px) translateZ(0px);
     }
@@ -508,6 +554,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(100%) translateZ(0px);
     }
+
     to {
       transform: translateX(0px) translateZ(0px);
     }
@@ -517,6 +564,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(0px) translateZ(0px);
     }
+
     to {
       transform: translateX(-100%) translateZ(0px);
     }
@@ -526,6 +574,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(100%) translateZ(0px);
     }
+
     to {
       transform: translateX(-100%) translateZ(0px);
     }
@@ -535,6 +584,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(0px) translateZ(0px);
     }
+
     to {
       transform: translateX(100%) translateZ(0px);
     }
@@ -544,6 +594,7 @@ function isCenter(slide: { position: string }) {
     from {
       transform: translateX(-100%) translateZ(0px);
     }
+
     to {
       transform: translateX(100%) translateZ(0px);
     }

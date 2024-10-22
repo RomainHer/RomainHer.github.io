@@ -64,7 +64,7 @@ function submitForm() {
         title.value = ''
         message.value = ''
       },
-      (error) => {
+      (error: string) => {
         errorMessage.value = error
         showAlert('error')
       }
