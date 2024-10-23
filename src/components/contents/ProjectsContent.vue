@@ -1,7 +1,10 @@
-<script lang="ts">
-import {
-  ref
-} from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
+import FitiImage from '@/assets/images/projet-image-fiti-admin.png'
+import MapsGgImage from '@/assets/images/projet-image-maps-gg.jpg'
+import SitePersoImage from '@/assets/images/projet-image-site-perso.png'
+import ProjectsCard from '../ProjectCard.vue'
+
 const slides = ref([{
     number: 0,
     color: 'aqua',
@@ -24,7 +27,7 @@ const projects = [{
     name: 'Maps.gg',
     startDate: new Date(),
     endDate: undefined,
-    image: 'projet-image-maps-gg.jpg',
+    image: MapsGgImage,
     descriptionEN: 'Mobile app to find video games tournaments near you, using a map and your geolocation',
     descriptionFR: 'Application mobile qui permet de trouver des tournois de jeux vidéo près de chez vous, en utilisant une carte et votre géolocalisation',
     technologies: ["Flutter", "Dart", "GraphQL", "API start.gg"],
@@ -48,7 +51,7 @@ const projects = [{
     name: 'FITi',
     startDate: new Date(2023, 9),
     endDate: new Date(2024, 3),
-    image: 'projet-image-fiti-admin.png',
+    image: FitiImage,
     descriptionEN: 'Admin web app for a mobile app to create and participate in sports sessions with nutrition tracking. This web app allows you to manage the data of the mobile app such as users, sports sessions and meals through an ergonomic graphical interface.',
     descriptionFR: 'Application  web d\'administration pour une application mobile de création et de participation à des séances de sport avec un suivi de la nutrition. Cette application web permet de gerer les données de l\'app mobile comme les utilisateur les séances de sport et les repas grace à une interface graphique ergonomique.',
     technologies: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
@@ -76,7 +79,7 @@ const projects = [{
     name: 'This web site',
     startDate: new Date(2024, 9),
     endDate: undefined,
-    image: 'projet-image-site-perso.png',
+    image: SitePersoImage,
     descriptionEN: 'My personal website (this website) to introduce myself and showcase all my projects, like an online resume or portfolio.',
     descriptionFR: 'Mon site web personnel (ce site web) pour me présenter ainsi que tous mes projets, comme un CV en ligne ou un portfolio.',
     technologies: ['Vue.js', 'HTML', 'CSS', 'TypeScript'],
@@ -163,8 +166,19 @@ function isCenter(slide: {
       <img src="../../assets/icons/left-chevron-svgrepo-com.svg" alt="icon left" class="chevron chevron-left" />
     </div>
     <div class="card carousel">
-      <div v-for="slide in slides" :key="slide.number" class="slide" :class="slide.position" :style="{ backgroundColor: slide.color }">
-        {{ slide.number }}
+      <div v-for="slide in slides" :key="slide.number" class="slide" :class="slide.position">
+        <ProjectsCard 
+        :id="slide.number" 
+        :projectName="projects[slide.number].name"
+        :startDate="projects[slide.number].startDate"
+        :endDate="projects[slide.number].endDate"
+        :image="projects[slide.number].image"
+        :descriptionEN="projects[slide.number].descriptionEN"
+        :descriptionFR="projects[slide.number].descriptionFR"
+        :technologies="projects[slide.number].technologies"
+        :missionsEN="projects[slide.number].missionsEN"
+        :missionsFR="projects[slide.number].missionsFR"
+      />
       </div>
     </div>
     <div @click="moveRight">
@@ -266,6 +280,10 @@ function isCenter(slide: {
   left: 0px;
   width: 100%;
   height: 100%;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 0px 50px -3px rgba(0, 0, 0, 0.25);
+
 }
 
 .center {
