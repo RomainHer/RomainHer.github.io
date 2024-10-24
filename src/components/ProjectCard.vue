@@ -40,7 +40,7 @@ onMounted(() => {
       <span v-if="endDate"> - {{ endDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) }}</span>
     </div>
     <div :class="{ 'row-content': isPortrait }">
-      <img :src="image" :alt="projectName" ref="imageRef" :class="{ 'portrait-image': isPortrait}" />
+      <img :src="image" :alt="projectName" ref="imageRef" :class="{ 'portrait-image': isPortrait}" draggable="false"/>
       <div>
         <div class="description">
           <p>{{ descriptionEN }}</p>
@@ -78,8 +78,9 @@ onMounted(() => {
 
 img {
   width: 100%;
-  height: auto;
   margin: 10px 0;
+  box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 
 .description {
@@ -93,6 +94,7 @@ img {
 
 .portrait-image {
   width: 50%;
+  height: fit-content;
   padding-left: 20px;
 }
 </style>

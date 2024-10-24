@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 import FitiImage from '@/assets/images/projet-image-fiti-admin.png'
 import MapsGgImage from '@/assets/images/projet-image-maps-gg.jpg'
 import SitePersoImage from '@/assets/images/projet-image-site-perso.png'
 import ProjectsCard from '../ProjectCard.vue'
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
+const carousel = useTemplateRef('carousel')
 
 const slides = ref([{
     number: 0,
@@ -108,6 +112,25 @@ function mod(n: number, m: number) {
   return ((n % m) + m) % m
 }
 
+function tapHandler(e : MouseEvent) {
+  if (e.currentTarget) {
+    const className = (e.currentTarget as HTMLElement).classList[1]
+    if(className.startsWith('left')) {
+      moveLeft()
+    } else if(className.startsWith('right')) {
+      moveRight()
+    }
+  }
+}
+
+function swipeHandler(direction: string) {
+  if(direction === "left") {
+    moveRight()
+  } else if(direction === "right") {
+    moveLeft()
+  }
+}
+
 function moveLeft() {
   let copiedArray = JSON.parse(JSON.stringify(slides.value))
   for (const slide of slides.value) {
@@ -162,11 +185,11 @@ function isCenter(slide: {
     </div>
   </div>
   <div class="carousel-container">
-    <div @click="moveLeft">
+    <div v-if="width >= 1000" @click="moveLeft">
       <img src="../../assets/icons/left-chevron-svgrepo-com.svg" alt="icon left" class="chevron chevron-left" />
     </div>
-    <div class="card carousel">
-      <div v-for="slide in slides" :key="slide.number" class="slide" :class="slide.position">
+    <div class="card carousel" ref="carousel" >
+      <div v-for="slide in slides" :key="slide.number" class="slide" :id="'slide'+slide.number" :class="slide.position" v-touch:swipe="swipeHandler" v-touch:tap="tapHandler">
         <ProjectsCard 
         :id="slide.number" 
         :projectName="projects[slide.number].name"
@@ -181,7 +204,7 @@ function isCenter(slide: {
       />
       </div>
     </div>
-    <div @click="moveRight">
+    <div v-if="width >= 1000" @click="moveRight">
       <img src="../../assets/icons/right-chevron-svgrepo-com.svg" alt="icon left" class="chevron chevron-right" />
     </div>
   </div>
@@ -192,14 +215,14 @@ function isCenter(slide: {
 </template>
 
 <style scoped>
-@media (min-width: 850px) {
+@media (min-width: 1000px) {
   #projects-content {
     padding: 50px;
     margin: 50px;
   }
 }
 
-@media (max-width: 849px) {
+@media (max-width: 999px) {
   #projects-content {
     /*margin-left: 50px;
     padding-left: 40px;*/
@@ -280,10 +303,8 @@ function isCenter(slide: {
   left: 0px;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
   background-color: white;
-  box-shadow: 0px 0px 50px -3px rgba(0, 0, 0, 0.25);
-
+  user-select: none;
 }
 
 .center {
@@ -433,14 +454,19 @@ function isCenter(slide: {
   animation-fill-mode: forwards;
 }*/
 
-@media (min-width: 850px) {
+@media (min-width: 1000px) {
   .card {
     width: 60%;
   }
 
+  .slide {
+    border-radius: 15px;
+    box-shadow: 0px 0px 50px -3px rgba(0, 0, 0, 0.25);
+  }
+
   .carousel {
-    margin-left: 12%;
-    margin-right: 12%;
+    margin-left: 16%;
+    margin-right: 16%;
   }
 
   .left {
@@ -522,7 +548,7 @@ function isCenter(slide: {
   }
 }
 
-@media (max-width: 849px) {
+@media (max-width: 999px) {
   .carousel-container {
     position: relative;
   }
@@ -544,6 +570,9 @@ function isCenter(slide: {
 
   .card {
     width: 100%;
+
+  border-radius: 15px;
+  box-shadow: 0px 0px 50px -3px rgba(0, 0, 0, 0.25);
   }
 
   .carousel {
