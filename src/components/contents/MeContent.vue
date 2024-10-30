@@ -22,6 +22,13 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
         <div class="title-content-fr">À propos de moi</div>
       </div>
       <div class="about-me-content">
+        Front-end developer with solid experience in creating modern and responsive web and mobile
+        interfaces, along with strong back-end skills for complete solutions. With 3 years of
+        experience at Orange, I offer freelance services for front-end development missions, while
+        incorporating my back-end expertise for customized solutions. Available to support you from
+        conception to production, ensuring efficiency and quality.
+      </div>
+      <div class="about-me-content fr">
         Développeur front-end avec une expérience solide dans la création d’interfaces web et
         mobiles, modernes et réactives, ainsi qu'une bonne maîtrise du back-end pour des solutions
         complètes. Fort de 3 ans d’expérience chez Orange, je propose mes services en freelance pour
@@ -33,7 +40,8 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
         class="terminal-container tc-light tc-light-button"
         @click="downloadPdf('/CV.pdf', 'CV_Romain_Heriteau_2024.pdf')"
       >
-        <span>Voir mon CV</span>
+        <span>See my resume</span>
+        <!--<span>Voir mon CV</span>-->
       </div>
     </div>
   </div>
@@ -85,5 +93,10 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
   font-family: 'Spline Sans Mono', monospace;
   text-align: justify;
   padding-bottom: 30px;
+}
+
+.fr {
+  font-style: italic;
+  font-size: 14px;
 }
 </style>

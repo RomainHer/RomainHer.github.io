@@ -154,6 +154,7 @@ onMounted(() => {
 @media (min-width: 850px) {
   .contact-box {
     margin: 30px;
+    max-width: 900px;
   }
 
   .contact-form-box {

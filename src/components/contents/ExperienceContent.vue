@@ -10,13 +10,13 @@
         <div class="experience-list">
           <div
             v-for="experience in props.experiences"
-            :key="experience.title"
+            :key="experience.title_en"
             class="experience-item"
           >
             <div class="title">
               <div class="title-text">
-                <div>{{ experience.title + ' - ' + experience.company }}</div>
-                <div class="experience-address">{{ experience.address }}</div>
+                <div>{{ experience.title_en + ' - ' + experience.company_en }}</div>
+                <div class="experience-address">{{ experience.address_en }}</div>
               </div>
               <div
                 class="history-point"
@@ -38,8 +38,8 @@
               </span>
               <span v-else>{{ experience.startYear }}</span>
             </div>
-            <div v-if="experience.description != ''" class="description">
-              {{ experience.description }}
+            <div v-if="experience.description_en != ''" class="description">
+              {{ experience.description_en }}
             </div>
           </div>
         </div>
@@ -49,18 +49,11 @@
 </template>
 
 <script setup lang="ts">
+import type { Experience } from '@/types'
 import { defineProps } from 'vue'
 
 const props = defineProps<{
-  experiences: {
-    type: string
-    title: string
-    company: string
-    address: string
-    startYear: number
-    endYear: number
-    description: string
-  }[]
+  experiences: Experience[]
 }>()
 </script>
 

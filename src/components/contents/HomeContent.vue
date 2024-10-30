@@ -60,7 +60,8 @@ function openInNewTab(url: string) {
         </div>
         <div class="en-des description">
           <div>
-            As an engineering student in my final year at Enssat in Brittany, France, and I'm a
+            Recently graduated as a computer engineer through an apprenticeship at Enssat in
+            Lannion, I'm a
             <span
               id="word-description-show-hide"
               :style="{ color: colors[writingWordColorIndex] }"
@@ -68,15 +69,19 @@ function openInNewTab(url: string) {
             >.
           </div>
           <div>
-            I enjoy working on personal projects related to web and mobile applications. Recently,
-            I’ve become interested in IOT and would like to start a home automation project.
+            I am currently seeking employment or freelance opportunities in web and mobile
+            development. Meanwhile, I am working on personal projects to refine my skills and
+            explore new technologies. Among other things, I am developing a mobile application with
+            Flutter that helps users find nearby video game tournaments using a map feature.
           </div>
         </div>
         <div class="fr-des description">
-          Je suis en étudiant développeur en dernière année dans une école d’ingénieur informatique
-          en Bretagne à Lannion, en France. J'aime travailler sur des projets personnels en lien
-          avec les applications web et mobile. Récemment, je m’intéresse au objets connectés et
-          j’aimerais commencer un projet de domotique.
+          Jeune diplômé ingénieur par apprentissage en informatique de l'Enssat à Lannion. Je suis
+          actuellement en recherche d'emploi ou de missions en freelance dans le développement web
+          et mobile. Je travaille en parallèle sur des projets personnels pour me perfectionner et
+          découvrir de nouvelles technologies. Je développe, entre autres, une application mobile
+          avec Flutter qui permet de trouver des tournois de jeux vidéo autour de chez soi à l'aide
+          d'une carte.
         </div>
         <!--<div class="word-description">
                 <span>A</span> <span id="word-description-show-hide"></span>,
@@ -195,7 +200,7 @@ function openInNewTab(url: string) {
   padding-top: 40px;
   color: white;
   width: 70%;
-  max-width: 900px;
+  max-width: 1200px;
 }
 
 .welcome-title {
