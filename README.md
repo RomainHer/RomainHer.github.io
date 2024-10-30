@@ -73,7 +73,7 @@ Les contributions, suggestions et retours sont les bienvenus ! Si vous souhaitez
 Pour toute question ou suggestion, n'hésitez pas à me contacter via mon email ou à me suivre sur LinkedIn ou me contacter par mail ou sur discord.
 
 - [LinkedIn](https://www.linkedin.com/in/romain-heriteau-1b902b205)
-- [Discord](https://discordapp.com/users/62028755057718071)
+- [Discord](https://discordapp.com/users/620287550577180715)
 - <romain.heriteau1@gmail.com>
 
 Merci de visiter mon site et ce dépôt ! N'hésitez pas à explorer le code source et à partager vos retours.
