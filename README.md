@@ -28,7 +28,7 @@ To clone and run this project locally:
 
 1. Clone this repository:
 
-   With HTTP
+   With HTTPS
 
    ```bash
    git clone https://github.com/RomainHer/RomainHer.github.io.git
