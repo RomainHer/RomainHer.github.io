@@ -1,51 +1,62 @@
-# Mon site personnel
+# My Personal Website
 
-Bienvenue sur le dépôt de mon site web personnel ! Ce site a été créé en utilisant Vue.js 3 et est hébergé sur GitHub Pages. [Découvrir mon site](https://romainher.github.io)
+Welcome to the repository for my personal website!
+This site was built using Vue.js 3 and is hosted on GitHub Pages.
 
-## Aperçu
+## Overview
 
-Ce site personnel présente mon parcours, mes projets et mes compétences. Il est conçu pour offrir une navigation fluide et interactive, mettant en avant des animations et une interface utilisateur moderne. Il m'a permis de me perfectionné en Vue.js mais surtout en CSS avec la création d'animations en CSS, comme avec le carousel.
+This personal website showcases my background, work experience, projects, and skills.
+It’s designed to provide smooth, interactive navigation with animations and a modern user interface.
 
-## Fonctionnalités
+## Features
 
-- **Présentation personnelle** : Biographie et informations personnelles
-- **Projets** : Liste et description de mes projets
-- **Compétences** : Compétences techniques mises en avant
-- **Contact** : Informations pour me contacter
+- **Personal Introduction**: Biography and personal information
+- **Work Experience** : List of all company I worked for
+- **Skills**: Highlighted technical skills
+- **Projects**: List and descriptions of my projects
+- **Contact**: Information on how to reach me
 
-## Technologies utilisées
+## Technologies Used
 
-- **Framework** : Vue.js 3
-- **Hébergement** : GitHub Pages
-- **Autres** : HTML5, CSS3, TypeScript
+- **Framework**: Vue.js 3
+- **Hosting**: GitHub Pages
+- **Other**: HTML5, CSS3, JavaScript
 
-## Installation et déploiement local
+## Installation and Local Deployment
 
-Pour cloner et exécuter le projet en local :
+To clone and run this project locally:
 
-1. Clonez ce dépôt :
+1. Clone this repository:
 
-```bash
-git clone https://github.com/nom_utilisateur/nom_depot.git
-```
+   With HTTP
 
-2. Accédez au dossier du projet :
+   ```bash
+   git clone https://github.com/RomainHer/RomainHer.github.io.git
+   ```
 
-```bash
-cd nom_depot
-```
+   With SSH
 
-3. Installez les dépendances :
+   ```bash
+   git clone git@github.com:RomainHer/RomainHer.github.io.git
+   ```
 
-```sh
-npm install
-```
+2. Navigate to the project folder:
 
-4. Lancez l'application en mode développement :
+   ```bash
+   cd RomainHer.github.io
+   ```
 
-```sh
-npm run dev
-```
+3. Install dependencies:
+
+   ```sh
+   npm install
+   ```
+
+4. Start the application in development mode:
+
+   ```sh
+   npm run dev
+   ```
 
 ## Other commands
 
@@ -63,17 +74,17 @@ npm run lint
 
 ## Contributions
 
-Les contributions, suggestions et retours sont les bienvenus ! Si vous souhaitez contribuer, veuillez ouvrir une issue pour discuter des changements potentiels avant de créer une pull request.
+Contributions, suggestions, and feedback are welcome! If you wish to contribute, please open an issue to discuss potential changes before creating a pull request.
 
 - [Issues](https://github.com/RomainHer/RomainHer.github.io/issues)
 - [Pull Requests](https://github.com/RomainHer/RomainHer.github.io/pulls)
 
 ## Contact
 
-Pour toute question ou suggestion, n'hésitez pas à me contacter via mon email ou à me suivre sur LinkedIn ou me contacter par mail ou sur discord.
+For any questions or suggestions, feel free to contact me via email, discord, or connect with me on LinkedIn.
 
 - [LinkedIn](https://www.linkedin.com/in/romain-heriteau-1b902b205)
 - [Discord](https://discordapp.com/users/620287550577180715)
 - <romain.heriteau1@gmail.com>
 
-Merci de visiter mon site et ce dépôt ! N'hésitez pas à explorer le code source et à partager vos retours.
+Thank you for visiting my site and this repository! Feel free to explore the source code and share your feedback.
