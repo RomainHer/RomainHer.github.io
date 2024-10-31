@@ -53,10 +53,15 @@ const projects = [
       "Ajout de filtres pour l'affichage des tournois"
     ],
     seeProjectEN:
-      "This project is still in development, I'll add the Google Play link to the project when it's finished and the Github link to the project when it's public",
+      "This project is still in development, I'll add the Google Play link to the project when it's available. For now you can see the code on my Github to test the first versions",
     seeProjectFR:
-      "Ce projet est encore en développement, j'ajouterai le lien Google Play au projet quand il sera terminé et le lien Github au projet quand il sera public",
-    seeProjectLinks: []
+      "Ce projet est encore en développement, j'ajouterai le lien Google Play au projet sera disponible. Pour le moment vous pouvez voir le code sur mon Github pour tester les premières versions",
+    seeProjectLinks: [
+      {
+        name: 'Github',
+        url: 'https://github.com/RomainHer/maps.gg'
+      }
+    ]
   },
   {
     id: 1,
