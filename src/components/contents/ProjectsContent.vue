@@ -330,7 +330,7 @@ onUpdated(() => {
   justify-content: center;
   align-items: center;
   max-width: 1300px;
-  justify-self: center;
+  align-self: center;
 }
 
 .intro-content {

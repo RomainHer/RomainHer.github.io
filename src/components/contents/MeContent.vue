@@ -65,7 +65,7 @@ async function downloadPdf(pdfPath: string, pdfName: string) {
 }
 
 #me-content {
-  justify-self: center;
+  align-self: center;
   max-width: 1090px;
   position: relative;
   background-color: white;

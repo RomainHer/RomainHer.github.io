@@ -35,8 +35,7 @@ const { width } = useWindowSize()
 }
 
 footer {
-  display: flex;
-  justify-content: center;
+  align-items: center;
   padding: 10px;
   color: #3686e4;
   background-color: #040a25;
