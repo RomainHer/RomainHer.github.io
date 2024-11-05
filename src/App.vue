@@ -29,6 +29,10 @@ const { width } = useWindowSize()
   }
 }
 
+.content {
+  display: flex;
+}
+
 footer {
   display: flex;
   justify-content: center;
