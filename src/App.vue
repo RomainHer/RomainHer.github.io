@@ -31,6 +31,7 @@ const { width } = useWindowSize()
 
 .content {
   display: flex;
+  flex-direction: column;
 }
 
 footer {
