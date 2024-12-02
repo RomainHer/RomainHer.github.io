@@ -85,6 +85,14 @@ onMounted(() => {
       <div class="contact-title title-content">
         <div class="title-content-en">Contact me</div>
         <div class="contact-title-fr title-content-fr">Me contacter</div>
+        <div class="contact-selector">
+          <div class="contact-selector-button">
+            <img src="../../assets/icons/mail.svg" class="icon-sidebar" alt="icon me" />
+          </div>
+          <div class="contact-selector-button">
+            <img src="../../assets/icons/calendar.svg" class="icon-sidebar" alt="icon me" />
+          </div>
+        </div>
       </div>
       <form action="" id="contact-form" ref="contact-form">
         <div class="contact-form-box">
@@ -220,6 +228,26 @@ onMounted(() => {
   .contact-form-personal-info {
     margin-bottom: 12px;
   }
+}
+
+.contact-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: -30px;
+}
+
+.contact-selector-button {
+  width: 100px;
+  padding-block: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #040a25;
+  color: white;
+  border-radius: 15px;
 }
 
 #contact-content {

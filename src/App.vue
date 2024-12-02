@@ -2,8 +2,23 @@
 import NavBar from './components/NavBar.vue'
 import ContentContainer from './components/ContentContainer.vue'
 import { useWindowSize } from '@vueuse/core'
+import { onMounted } from 'vue'
 
 const { width } = useWindowSize()
+
+// Charger dynamiquement le script Calendly
+onMounted(() => {
+  const scriptId = 'calendly-script'
+
+  // Vérifie si le script existe déjà pour éviter les doublons
+  if (!document.getElementById(scriptId)) {
+    const script = document.createElement('script')
+    script.id = scriptId
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    document.head.appendChild(script)
+  }
+})
 </script>
 
 <template>
@@ -11,9 +26,18 @@ const { width } = useWindowSize()
 
   <main class="content">
     <ContentContainer />
+
+    <!-- Widget Calendly -->
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/romain-heriteau1/30min"
+      style="min-width:320px;height:700px;">
+    </div>
   </main>
 
-  <footer class="content">Credits : Romain Heriteau & Léane Diraison (Design)</footer>
+  <footer class="content">
+    Credits : Romain Heriteau & Léane Diraison (Design)
+  </footer>
 </template>
 
 <style scoped>
