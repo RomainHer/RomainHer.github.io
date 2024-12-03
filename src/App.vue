@@ -2,15 +2,12 @@
 import NavBar from './components/NavBar.vue'
 import ContentContainer from './components/ContentContainer.vue'
 import { useWindowSize } from '@vueuse/core'
-import { onMounted } from 'vue'
+import { onMounted } from 'vue';
 
 const { width } = useWindowSize()
 
-// Charger dynamiquement le script Calendly
 onMounted(() => {
   const scriptId = 'calendly-script'
-
-  // Vérifie si le script existe déjà pour éviter les doublons
   if (!document.getElementById(scriptId)) {
     const script = document.createElement('script')
     script.id = scriptId
@@ -26,13 +23,6 @@ onMounted(() => {
 
   <main class="content">
     <ContentContainer />
-
-    <!-- Widget Calendly -->
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/romain-heriteau1/30min"
-      style="min-width:320px;height:700px;">
-    </div>
   </main>
 
   <footer class="content">
