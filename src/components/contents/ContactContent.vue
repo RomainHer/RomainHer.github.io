@@ -11,11 +11,25 @@ const emailError = ref('')
 const name = ref('')
 const title = ref('')
 const message = ref('')
+const contactSelected = ref("mail")
+const calendarHeight = ref(0)
 const validationAlert = ref(false)
 const errorAlert = ref(false)
 const errorMessage = ref('')
 const errorEmailAlert = ref(false)
 const errorNotCompletedAlert = ref(false)
+
+function selectMail() {
+  console.log('selectMail')
+  contactSelected.value = 'mail'
+  calendarHeight.value = 0
+}
+
+function selectCalendar() {
+  console.log('selectCalendar')
+  contactSelected.value = 'calendar'
+  calendarHeight.value = 925
+}
 
 function showAlert(alertType: string) {
   if (alertType === 'validation') {
@@ -76,18 +90,69 @@ onMounted(() => {
   emailjs.init({
     publicKey: 'Kl2imbL-5M-nbn11K'
   })
+
+  // Charger dynamiquement le script Calendly
+  const scriptId = 'calendly-script'
+  if (!document.getElementById(scriptId)) {
+    const script = document.createElement('script')
+    script.id = scriptId
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    document.head.appendChild(script)
+  }
 })
 </script>
 
 <template>
   <div id="contact-content" class="content">
     <div class="contact-box">
-      <div class="contact-title title-content">
-        <div class="title-content-en">Contact me</div>
-        <div class="contact-title-fr title-content-fr">Me contacter</div>
+      <div class="contact-title">
+        <div class="title-content">
+          <div class="title-content-en">Contact me</div>
+          <div class="contact-title-fr title-content-fr">Me contacter</div>
+        </div>
+        <div class="contact-selector">
+          <div
+            class="contact-selector-button"
+            :class="{'active-conctact-button': (contactSelected == 'mail'), 'inactive-conctact-button': (contactSelected != 'mail')}"
+            @click="selectMail">
+            <img
+              v-if="contactSelected == 'mail'"
+              src="../../assets/icons/mail-white.svg"
+              class="icon-sidebar"
+              alt="mail icon"
+              style="height: 45px;" />
+            <img
+              v-if="contactSelected != 'mail'"
+              src="../../assets/icons/mail-blue.svg"
+              class="icon-sidebar"
+              alt="mail icon"
+              style="height: 45px;" />
+          </div>
+          <div
+            class="contact-selector-button"
+            :class="{'active-conctact-button': (contactSelected == 'calendar'), 'inactive-conctact-button': (contactSelected != 'calendar')}"
+            @click="selectCalendar">
+            <img
+              v-if="contactSelected == 'calendar'"
+              src="../../assets/icons/calendar-white.svg"
+              class="icon-sidebar"
+              alt="calendar icon"
+              style="height: 45px;" />
+            <img
+              v-if="contactSelected != 'calendar'"
+              src="../../assets/icons/calendar-blue.svg"
+              class="icon-sidebar"
+              alt="calendar icon"
+              style="height: 45px;" />
+          </div>
+        </div>
       </div>
-      <form action="" id="contact-form" ref="contact-form">
+
+      <!-- Formulaire de contact -->
+      <form v-if="contactSelected == 'mail'" action="" id="contact-form" ref="contact-form">
         <div class="contact-form-box">
+          <!-- Alertes -->
           <div v-if="validationAlert" class="validation-alert">
             Your message has been sent successfully
           </div>
@@ -96,11 +161,12 @@ onMounted(() => {
             <div>{{ errorMessage }}</div>
           </div>
           <div v-if="errorEmailAlert" class="error-alert">
-            <div>Your email is not valide</div>
+            <div>Your email is not valid</div>
           </div>
           <div v-if="errorNotCompletedAlert" class="error-alert">
             Complete all the inputs before sending an email
           </div>
+          <!-- Champs du formulaire -->
           <div class="contact-form-personal-info">
             <input
               class="contact-input"
@@ -108,8 +174,7 @@ onMounted(() => {
               name="contact-form-name"
               id="contact-form-name"
               placeholder="Name"
-              v-model="name"
-            />
+              v-model="name" />
             <div class="contact-form-email-container">
               <input
                 class="contact-input"
@@ -119,8 +184,7 @@ onMounted(() => {
                 placeholder="Email"
                 v-model="email"
                 @input="validateEmail"
-                :class="{ 'contact-input-error': emailError && email != '' }"
-              />
+                :class="{ 'contact-input-error': emailError && email != '' }" />
               <div class="text-error">{{ emailError }}</div>
             </div>
           </div>
@@ -130,8 +194,7 @@ onMounted(() => {
             name="contact-form-title"
             id="contact-form-title"
             placeholder="Title"
-            v-model="title"
-          />
+            v-model="title" />
           <textarea
             class="contact-input"
             name="contact-form-message"
@@ -139,13 +202,22 @@ onMounted(() => {
             cols="30"
             :rows="width >= 850 ? 10 : 6"
             placeholder="Message"
-            v-model="message"
-          ></textarea>
+            v-model="message"></textarea>
           <div class="terminal-container tc-light tc-light-button" @click="submitForm">
             <span>Send</span>
           </div>
         </div>
       </form>
+      
+      <!-- Calendly -->
+      <div class="calendly-container" :class="{'calendly-container-shadow': contactSelected == 'calendar'}">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/romain-heriteau1/30min"
+          style="min-width: 320px; width: 100%;"
+          :style="{'height': calendarHeight+'px'}">
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -154,7 +226,7 @@ onMounted(() => {
 @media (min-width: 850px) {
   .contact-box {
     margin: 30px;
-    max-width: 900px;
+    max-width: 1000px;
   }
 
   .contact-form-box {
@@ -183,6 +255,10 @@ onMounted(() => {
 
   .contact-form-personal-info {
     margin-bottom: 20px;
+  }
+
+  .contact-title {
+    width: 40%;
   }
 }
 
@@ -220,6 +296,57 @@ onMounted(() => {
   .contact-form-personal-info {
     margin-bottom: 12px;
   }
+
+  .contact-title {
+    width: 300px;
+  }
+
+  .calendly-container {
+    padding-top: 20px;
+  }
+}
+
+
+
+.contact-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: -30px;
+}
+
+.active-conctact-button {
+  background-color: #3B5CDD;
+  color: white;
+}
+
+.inactive-conctact-button {
+  background-color: white;
+  color: black;
+}
+
+.contact-selector-button {
+  z-index: 5;
+  width: 100px;
+  padding-block: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 0px 25px rgb(0 0 0 / 20%);
+}
+
+.calendly-container {
+  width: 100%;
+}
+
+.calendly-container-shadow {
+  -webkit-box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
+  -moz-box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
+  box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
 }
 
 #contact-content {
@@ -245,7 +372,10 @@ onMounted(() => {
 }
 
 .contact-title {
-  padding-bottom: 50px;
+  display: flex;
+  padding-bottom: 30px;
+  justify-content: center;
+  position: relative;
 }
 
 .contact-title-fr {
@@ -256,6 +386,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 20px;
   width: 100%;
   -webkit-box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
   -moz-box-shadow: 0px -10px 5px rgb(0 0 0 / 10%);
