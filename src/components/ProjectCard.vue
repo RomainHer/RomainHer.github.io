@@ -1,23 +1,17 @@
 <script setup lang="ts">
-import type { Link } from '@/types'
+import type { Project } from '@/types'
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n';
 
 defineProps({
-  id: Number,
-  projectName: String,
-  startDate: Date,
-  endDate: Date,
-  image: String,
-  descriptionEN: String,
-  descriptionFR: String,
-  technologies: Array<string>,
-  missionsEN: Array<string>,
-  missionsFR: Array<string>,
-  seeProjectEN: String,
-  seeProjectFR: String,
-  seeProjectLink: Array<Link>
+  project: {
+    type: Object as () => Project,
+    required: true,
+    default: () => ({} as Project)
+  }
 })
 
+const { locale } = useI18n<{ locale: 'en' | 'fr' }>()
 const imageRef = ref<HTMLImageElement | null>(null)
 const imageWidth = ref<number | null>(null)
 const imageHeight = ref<number | null>(null)
@@ -38,46 +32,46 @@ onMounted(() => {
 
 <template>
   <div class="project-card">
-    <div class="title">{{ projectName }}</div>
+    <div class="title">{{ project.name }}</div>
     <div class="dates">
       <span>{{
-        startDate && startDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+        project.startDate && project.startDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
       }}</span>
-      <span v-if="endDate">
-        - {{ endDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) }}</span
+      <span v-if="project.endDate">
+        - {{ project.endDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) }}</span
       >
     </div>
     <div :class="{ 'row-content': isPortrait, 'col-content': !isPortrait }">
       <img
-        :src="image"
-        :alt="projectName"
+        :src="project.image"
+        :alt="project.name"
         ref="imageRef"
         :class="{ 'portrait-image': isPortrait }"
         draggable="false"
       />
       <div>
         <div class="description">
-          <p>{{ descriptionEN }}</p>
+          <p>{{ project.details[locale as 'en' | 'fr'].description }}</p>
         </div>
         <div class="technologies">
-          <div class="title">Technologies</div>
+          <div class="title">{{ $t("projects.project-card.technologies") }}</div>
           <p>
-            <span v-for="(technology, i) in technologies ?? []" :key="i"
-              >{{ technology }}<span v-if="i < (technologies?.length ?? 0) - 1">, </span></span
+            <span v-for="(technology, i) in project.technologies ?? []" :key="i"
+              >{{ technology }}<span v-if="i < (project.technologies?.length ?? 0) - 1">, </span></span
             >
           </p>
         </div>
         <div class="missions">
-          <div class="title">Missions</div>
+          <div class="title">{{ $t("projects.project-card.missions") }}</div>
           <ul>
-            <li v-for="mission in missionsEN" :key="mission">{{ mission }}</li>
+            <li v-for="mission in project.details[locale as 'en' | 'fr'].missions" :key="mission">{{ mission }}</li>
           </ul>
         </div>
         <div class="see-project">
-          <div class="title">See project</div>
-          <p>{{ seeProjectEN }}</p>
+          <div class="title">{{ $t("projects.project-card.see-project") }}</div>
+          <p>{{ project.details[locale as 'en' | 'fr'].seeProject }}</p>
           <a
-            v-for="(link, i) in seeProjectLink"
+            v-for="(link, i) in project.seeProjectLinks"
             :key="i"
             :href="link.url"
             target="_blank"

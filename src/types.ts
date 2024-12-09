@@ -3,16 +3,37 @@ export interface Link {
   url: string
 }
 
+export interface LocalizedExperienceContent {
+  title: string;
+  company: string;
+  address: string;
+  description: string;
+}
+
 export interface Experience {
-  type: string
-  title_fr: string
-  title_en: string
-  company_fr: string
-  company_en: string
-  address_fr: string
-  address_en: string
-  startYear: number
-  endYear: number
-  description_fr: string
-  description_en: string
+  type: string;
+  startYear: number;
+  endYear: number;
+  en: LocalizedExperienceContent;
+  fr: LocalizedExperienceContent;
+}
+
+export interface LocalizedProjectDetails {
+  description: string;
+  missions: string[];
+  seeProject: string;
+}
+
+export interface Project {
+  id: number;
+  name: string;
+  startDate: Date;
+  endDate?: Date;
+  image: string; // Chemin ou URL de l'image
+  technologies: string[];
+  seeProjectLinks: Link[];
+  details: {
+    en: LocalizedProjectDetails;
+    fr: LocalizedProjectDetails;
+  };
 }

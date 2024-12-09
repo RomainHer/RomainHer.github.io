@@ -13,6 +13,8 @@ import javaLogo from '@/assets/images/java.png'
 import scalaLogo from '@/assets/images/scala.png'
 import pythonLogo from '@/assets/images/python.png'
 import trelloLogo from '@/assets/images/trello.png'
+import springLogo from '@/assets/images/spring.png'
+import nextjsLogo from '@/assets/images/nextjs.png'
 
 const imageList = [
   { name: 'HTML', path: htmlLogo },
@@ -22,13 +24,15 @@ const imageList = [
   { name: 'React', path: reactLogo },
   { name: 'Flutter', path: flutterLogo },
   { name: 'TypeScript', path: tsLogo },
+  { name: 'Spring', path: springLogo },
+  { name: 'Next.js', path: nextjsLogo },
   { name: 'Node.js', path: nodejsLogo },
   { name: 'GitHub', path: githubLogo },
   { name: 'GitLab', path: gitlabLogo },
   { name: 'Java', path: javaLogo },
   { name: 'Scala', path: scalaLogo },
   { name: 'Python', path: pythonLogo },
-  { name: 'Trello', path: trelloLogo }
+  { name: 'Trello', path: trelloLogo },
 ]
 </script>
 
