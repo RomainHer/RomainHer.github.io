@@ -21,6 +21,22 @@ const messages = {
         'see-project': "See project",
       }
     },
+    contact: {
+      'mail-send': "Your message has been sent successfully !",
+      sumbit: "Send",
+      placeholder: {
+        name: "Name",
+        email: "Email",
+        title: "Title",
+        message: "Message",
+      },
+      error: {
+        'invalid-email': 'Please enter a valid email address',
+        'invalid-email-error' : 'Your email is not valid',
+        'sendind-error': 'An error occurred while sending the message :',
+        'form-not-completed': 'Complete all the inputs before sending an email'
+      }
+    }
   },
   fr: {
     home: {
@@ -41,11 +57,27 @@ const messages = {
         'see-project': "Voir le projet",
       }
     },
+    contact: {
+      'mail-send': "Votre message a bien été envoyé !",
+      submit: "Envoyer",
+      placeholder: {
+        name: "Nom",
+        email: "Email",
+        title: "Titre",
+        message: "Message",
+      },
+      error: {
+        'invalid-email': 'Veuillez entrer une adresse email valide',
+        'invalid-email-error' : 'Votre email n\'est pas valide',
+        'sendind-error': 'Une erreur est survenue lors de l\'envoi du message :',
+        'form-not-completed': 'Complétez tous les champs avant d\'envoyer le message'
+      }
+    }
   },
 };
 
 const i18n = createI18n({
-  locale: 'fr', // Langue par défaut
+  locale: 'en', // Langue par défaut
   fallbackLocale: 'en', // Langue de secours
   messages,
 });

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import emailjs from '@emailjs/browser'
 import { useWindowSize } from '@vueuse/core'
-
+const { t } = useI18n()
 const { width } = useWindowSize()
 
 const timeout = 4000
@@ -20,13 +21,11 @@ const errorEmailAlert = ref(false)
 const errorNotCompletedAlert = ref(false)
 
 function selectMail() {
-  console.log('selectMail')
   contactSelected.value = 'mail'
   calendarHeight.value = 0
 }
 
 function selectCalendar() {
-  console.log('selectCalendar')
   contactSelected.value = 'calendar'
   calendarHeight.value = 925
 }
@@ -58,7 +57,7 @@ function showAlert(alertType: string) {
 const validateEmail = () => {
   const emailPattern = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim
   if (!emailPattern.test(email.value)) {
-    emailError.value = 'Veuillez entrer une adresse email valide'
+    emailError.value = t('contact.error.invalid-email')
   } else {
     emailError.value = ''
   }
@@ -152,20 +151,6 @@ onMounted(() => {
       <!-- Formulaire de contact -->
       <form v-if="contactSelected == 'mail'" action="" id="contact-form" ref="contact-form">
         <div class="contact-form-box">
-          <!-- Alertes -->
-          <div v-if="validationAlert" class="validation-alert">
-            Your message has been sent successfully
-          </div>
-          <div v-if="errorAlert" class="error-alert">
-            <div>An error occurred while sending the message :</div>
-            <div>{{ errorMessage }}</div>
-          </div>
-          <div v-if="errorEmailAlert" class="error-alert">
-            <div>Your email is not valid</div>
-          </div>
-          <div v-if="errorNotCompletedAlert" class="error-alert">
-            Complete all the inputs before sending an email
-          </div>
           <!-- Champs du formulaire -->
           <div class="contact-form-personal-info">
             <input
@@ -173,7 +158,7 @@ onMounted(() => {
               type="text"
               name="contact-form-name"
               id="contact-form-name"
-              placeholder="Name"
+              :placeholder="$t('contact.placeholder.name')"
               v-model="name" />
             <div class="contact-form-email-container">
               <input
@@ -181,7 +166,7 @@ onMounted(() => {
                 type="text"
                 name="contact-form-email"
                 id="contact-form-email"
-                placeholder="Email"
+                :placeholder="$t('contact.placeholder.email')"
                 v-model="email"
                 @input="validateEmail"
                 :class="{ 'contact-input-error': emailError && email != '' }" />
@@ -193,7 +178,7 @@ onMounted(() => {
             type="text"
             name="contact-form-title"
             id="contact-form-title"
-            placeholder="Title"
+            :placeholder="$t('contact.placeholder.title')"
             v-model="title" />
           <textarea
             class="contact-input"
@@ -201,10 +186,25 @@ onMounted(() => {
             id="contact-form-message"
             cols="30"
             :rows="width >= 850 ? 10 : 6"
-            placeholder="Message"
-            v-model="message"></textarea>
+            :placeholder="$t('contact.placeholder.message')"
+            v-model="message">
+          </textarea>
+          <!-- Alertes -->
+          <div v-if="validationAlert" class="validation-alert">
+            {{ $t('contact.mail-send') }}
+          </div>
+          <div v-if="errorAlert" class="error-alert">
+            <div>{{ $t('contact.error.sendind-error') }}</div>
+            <div>{{ errorMessage }}</div>
+          </div>
+          <div v-if="errorEmailAlert" class="error-alert">
+            <div>{{ $t('contact.error.invalid-email-error') }}</div>
+          </div>
+          <div v-if="errorNotCompletedAlert" class="error-alert">
+            {{ $t('contact.error.form-not-completed') }}
+          </div>
           <div class="terminal-container tc-light tc-light-button" @click="submitForm">
-            <span>Send</span>
+            <span>{{ $t('contact.submit') }}</span>
           </div>
         </div>
       </form>
