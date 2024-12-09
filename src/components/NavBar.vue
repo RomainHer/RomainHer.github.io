@@ -1,4 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n();
+const selectedLanguage = ref(locale.value);
+
+function changeLanguage() {
+  locale.value = selectedLanguage.value;
+}
+</script>
 
 <template>
   <header>
@@ -14,6 +24,10 @@
         <a href="#contact-content">
           <img src="../assets/icons/messages.svg" class="icon-sidebar" alt="icon contact" />
         </a>
+        <select id="language-select" v-model="selectedLanguage" @change="changeLanguage">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+        </select>
       </div>
     </nav>
   </header>

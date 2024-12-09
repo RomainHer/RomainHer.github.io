@@ -3,17 +3,8 @@ import NavBar from './components/NavBar.vue'
 import ContentContainer from './components/ContentContainer.vue'
 import { useWindowSize } from '@vueuse/core'
 import { onMounted } from 'vue';
-import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 
 const { width } = useWindowSize()
-
-const { locale } = useI18n();
-const selectedLanguage = ref(locale.value);
-
-function changeLanguage() {
-  locale.value = selectedLanguage.value; // Modifier la langue
-    }
 
 onMounted(() => {
   const scriptId = 'calendly-script'
@@ -31,12 +22,6 @@ onMounted(() => {
   <NavBar v-if="width >= 450" />
 
   <main class="content">
-    <p>{{ $t('welcome') }}</p>
-    <label for="language-select">{{ $t('language') }}:</label>
-    <select id="language-select" v-model="selectedLanguage" @change="changeLanguage">
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-    </select>
     <ContentContainer />
   </main>
 
