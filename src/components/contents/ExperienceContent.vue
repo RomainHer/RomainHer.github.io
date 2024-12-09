@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import type { Experience } from '@/types'
+import { defineProps } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n<{ locale: 'en' | 'fr' }>()
+
+
+const props = defineProps<{
+  experiences: Experience[]
+}>()
+</script>
+
 <template>
   <div id="experience-content">
     <div class="center-content">
@@ -10,13 +23,13 @@
         <div class="experience-list">
           <div
             v-for="experience in props.experiences"
-            :key="experience.title_en"
+            :key="experience[locale as 'en' | 'fr'].title"
             class="experience-item"
           >
             <div class="title">
               <div class="title-text">
-                <div>{{ experience.title_en + ' - ' + experience.company_en }}</div>
-                <div class="experience-address">{{ experience.address_en }}</div>
+                <div>{{ experience[locale as 'en' | 'fr'].title + ' - ' + experience[locale as 'en' | 'fr'].company }}</div>
+                <div class="experience-address">{{ experience[locale as 'en' | 'fr'].address }}</div>
               </div>
               <div
                 class="history-point"
@@ -38,8 +51,8 @@
               </span>
               <span v-else>{{ experience.startYear }}</span>
             </div>
-            <div v-if="experience.description_en != ''" class="description">
-              {{ experience.description_en }}
+            <div v-if="experience[locale as 'en' | 'fr'].description != ''" class="description">
+              {{ experience[locale as 'en' | 'fr'].description }}
             </div>
           </div>
         </div>
@@ -47,15 +60,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Experience } from '@/types'
-import { defineProps } from 'vue'
-
-const props = defineProps<{
-  experiences: Experience[]
-}>()
-</script>
 
 <style scoped>
 @media (min-width: 850px) {

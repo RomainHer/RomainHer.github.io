@@ -56,12 +56,11 @@ function openInNewTab(url: string) {
       <div class="welcome-title">WELCOME</div>
       <div class="self-presentation">
         <div class="name-presentation">
-          I’M <span class="my-name"><span class="my-name-colored">ROMAIN HERITEAU</span>,</span>
+          {{ $t('home.IM') }} <span class="my-name"><span class="my-name-colored">ROMAIN HERITEAU</span>,</span>
         </div>
-        <div class="en-des description">
-          <div>
-            Recently graduated as a computer engineer through an apprenticeship at Enssat in
-            Lannion, I'm a
+        <div class="description">
+          <div class="short-desc">
+            {{ $t('home.short-me') }}
             <span
               id="word-description-show-hide"
               :style="{ color: colors[writingWordColorIndex] }"
@@ -69,20 +68,17 @@ function openInNewTab(url: string) {
             >.
           </div>
           <div>
-            I am currently seeking employment or freelance opportunities in web and mobile
-            development. Meanwhile, I am working on personal projects to refine my skills and
-            explore new technologies. Among other things, I am developing a mobile application with
-            Flutter that helps users find nearby video game tournaments using a map feature.
+            {{ $t('home.long-me') }}
           </div>
         </div>
-        <div class="fr-des description">
+        <!--<div class="fr-des description">
           Jeune diplômé ingénieur par apprentissage en informatique de l'Enssat à Lannion. Je suis
           actuellement en recherche d'emploi ou de missions en freelance dans le développement web
           et mobile. Je travaille en parallèle sur des projets personnels pour me perfectionner et
           découvrir de nouvelles technologies. Je développe, entre autres, une application mobile
           avec Flutter qui permet de trouver des tournois de jeux vidéo autour de chez soi à l'aide
           d'une carte.
-        </div>
+        </div>-->
         <!--<div class="word-description">
                 <span>A</span> <span id="word-description-show-hide"></span>,
             </div>-->
@@ -111,7 +107,7 @@ function openInNewTab(url: string) {
       </div>
     </div>
     <div class="discover-link">
-      <div>READY TO DISCOVER MY WORK</div>
+      <div>{{ $t('home.discover-work') }}</div>
       <a href="#projects-content"
         ><img src="../../assets/icons/down-arrow.svg" alt="icon down" id="icon-down"
       /></a>
@@ -173,6 +169,8 @@ function openInNewTab(url: string) {
   }
 
   .description {
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 15px;
   }
 
@@ -183,6 +181,10 @@ function openInNewTab(url: string) {
   .discover-link {
     font-size: 20px;
   }
+}
+
+.short-desc {
+  margin-bottom: 10px;
 }
 
 #home-content {

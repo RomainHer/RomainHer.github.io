@@ -1,8 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n();
+const selectedLanguage = ref(locale.value);
+
+function changeLanguage() {
+  locale.value = selectedLanguage.value;
+}
+</script>
 
 <template>
   <header>
     <nav class="sidebar">
+      <select id="language-select" v-model="selectedLanguage" @change="changeLanguage">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+      </select>
       <div class="items">
         <a href="#home-content" class="logo-name">RH. </a>
         <a href="#me-content">
@@ -20,6 +34,27 @@
 </template>
 
 <style scoped>
+.sidebar {
+  position: relative;
+}
+
+#language-select {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #040a25;
+  border: solid 1px white;
+  color: white;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: white 2px 2px 0px;
+}
+
+#language-select:focus {
+  outline: none;
+}
+
 a {
   text-decoration: none;
 }
